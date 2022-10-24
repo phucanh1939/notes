@@ -161,7 +161,7 @@ public class CarController : MonoBehaviour
 
 ### Wheels falls through ground when start game
 
-Reason: Wheel colliders position below the ground
+Reason: Wheel colliders position below the ground.
 
 Solution: Adjust position and radius of wheel colliders, Make the car higher than ground (the car will fall a bit when the game start).
 
