@@ -26,7 +26,7 @@
 
 9. **Transistor Invention (1947)**: The invention of the transistor at Bell Labs in 1947 revolutionized electronics and computer technology. Transistors replaced vacuum tubes and offered advantages such as smaller size, lower power consumption, and increased reliability.
 
-10. **Fortan(1950s)**: Fortan (Formula Translation), developed by IBM in the 1950s. Fortran was designed for scientific and engineering calculations and played a significant role in the early days of computer programming. Other early programming languages include COBOL (Common Business-Oriented Language) and ALGOL (Algorithmic Language).
+10. **Fortran(1950s)**: Fortran (Formula Translation), developed by IBM in the 1950s. Fortran was designed for scientific and engineering calculations and played a significant role in the early days of computer programming. Other early programming languages include COBOL (Common Business-Oriented Language) and ALGOL (Algorithmic Language).
 
 10. **Integrated Circuits (1960s)**: The development of integrated circuits in the 1960s allowed multiple transistors and other electronic components to be miniaturized and fabricated on a single chip. This advancement led to smaller, more powerful, and more affordable computers.
 
