@@ -1,11 +1,5 @@
 # Computer History
 
-## Why Computing Devices?
-
-- Perform calculations much faster and more accurately (less errors) than humans
-- Complex calculations
-- Repeated tasks (Automation)
-
 ## Milestones
 
 1. **Abacus (3000 BCE)**: The abacus is one of the earliest known computing devices. It consists of beads or stones on rods or wires and is used for performing arithmetic calculations.
