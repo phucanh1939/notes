@@ -2,6 +2,12 @@
 
 A computer is an electronic device designed to process data (perform tasks by executing instructions from software programs).
 
+The underlying hardware in any computer performs the same basic functions:
+  - inputting data
+  - outputting data
+  - processing data
+  - storing data
+
 ### What is data?
 
 Data refers to raw facts, figures, or pieces of information that a computer can process, store, and manipulate. In its most basic form, data is represented as binary (1s and 0s) inside a computer.
