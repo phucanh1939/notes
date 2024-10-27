@@ -12,7 +12,8 @@ _main:                                  ; @main
     ; This action will allocate 16 bytes on stack for local variables
     ; We only have 3 int (x, y, z) with total 12 bytes needed but the CPU allocate 16 bytes on stack . The reason is:
     ; Many CPU architectures, including ARM, require data to be aligned to certain boundaries for performance reasons
-    ; The stack pointer is often aligned to 8 bytes to ensure that data access is efficient.
+    ; The stack pointer is often aligned to 16 bytes to ensure that data access is efficient.
+    ; 16 bytes allignment mean allocation will be in a block of 16x (e.g 16, 32, etc.)
     ; Allocating 16 bytes ensures this allignment
     ; x: 8th - 11th bytes
     ; y: 4th - 7th bytes
