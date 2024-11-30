@@ -15,8 +15,12 @@ Smaller transistors = Faster switching speeds = Faster execution
 
 ## We can capture (encode) sound and light (images), what about smell?
 
-## How sound is encoded
+## How sound is encoded?
 
-## How light is encoded
+## How light is encoded?
+
+## How search engine work?
+
+## How to convert from assembly to a high-level language code (ex. C)
 
 ## Does MISP still be used and developed
