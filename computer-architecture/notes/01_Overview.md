@@ -53,7 +53,7 @@ NUMBER_OF_CLOCK_CYCLES = NUMBER_OF_INSTRUCTION * CPI;
 - 2000s - Present: Mobile computers, Cloud, AI
 
 As processors become faster and more powerful, they consume significantly more energy.
-Traditionally, higher clock speeds and smaller transistors helped improve performance, but they also led to increased power usage and heat dissipation issues.
+Traditionally, higher clock speeds (smaller time to execute task) and smaller transistors (more transistors = more computational units) helped improve performance, but they also led to increased power usage and heat dissipation issues.
 => The shift to multiprocessors has become more prevalent
 
 ### Present
@@ -72,7 +72,7 @@ Multi-core processors enhance performance while maintaining energy efficiency. T
 
 - Heterogeneous Computing: Combining CPUs, GPUs, and specialized processors for task-specific performance optimization
 - Quantum Computing: Harnessing quantum mechanics for exponential performance
-- Neuromorphic Computing: Mimicking  the human brain’s architecture to achieve energy-efficient, AI-driven performance
+- Neuromorphic Computing: Mimicking the human brain’s architecture to achieve energy-efficient, AI-driven performance
 - Photonic Processors: Using light instead of electricity for faster data transmission and lower energy consumption.
 - 3D Chip Stacking: Vertical integration of processor layers to increase density and reduce latency
 - Edge and Cloud Integration: Distributed computing paradigms that combine local and remote resources for optimal performance and scalability.
