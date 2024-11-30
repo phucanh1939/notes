@@ -19,3 +19,4 @@ Smaller transistors = Faster switching speeds = Faster execution
 
 ## How light is encoded
 
+## Does MISP still be used and developed
