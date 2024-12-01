@@ -4,22 +4,40 @@
 # -C: show both hex and ASCII
 hexdump -C ./out/main.o
 
-# List all section
-# objdump: Primarily designed for Linux and other Unix-like systems, works with ELF (Executable and Linkable Format) files
-# otool: Primarily designed for macOS, work with Mach-O format files
-objdump -h ./out/main.o
-otool -l ./out/main.o
+# View the usage of otool
+# otool is used to view content of object file in macOS
+# You can use objdump (objdump not fully support file format mach-o arm64)
+otool
+objdump
 
-# View the header section
-objdump -f ./out/main.o
+# header (mach-o type header)
 otool -h ./out/main.o
+objdump -x ./out/main.o
 
-# Disassembles .text section (contains instructions)
+# load commands
+otool -l ./out/main.o
+objdump -x ./out/main.o
+
+# -s <segname> <sectname> print contents of section
+# <segname> segment name
+# <sectname> section name
+otool -s __TEXT __text ./out/main.o
+objdump -j __text -d ./out/main.o
+
+#  -t print the text section (disassemble with -v)
+#  -x print all text sections (disassemble with -v)
+otool -t ./out/main.o
+otool -tv ./out/main.o
+otool -x ./out/main.o
+otool -xv ./out/main.o
 objdump -d ./out/main.o
-otool -tV ./out/main.o
 
-# View the Symbol Table
-objdump -t ./out/main.o
-otool -I -v ./out/main.o
+# -r print the relocation entries in all sections
+otool -r ./out/main.o
+objdump --reloc ./out/main.o
 
+# Symbol Table
+# otool not support print symbol table
+nm ./out/main.o
+objdump --syms ./out/main.o
 

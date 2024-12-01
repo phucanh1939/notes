@@ -1,4 +1,4 @@
-int sum_to_n(int n);
+#include "math.h"
 
 int main() {
     int n = 100;
