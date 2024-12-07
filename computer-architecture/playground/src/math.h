@@ -6,7 +6,7 @@
 
 // Function declarations
 int sum_to_n(int n);
-// float circle_area(float r);
-// float circle_circumference(float r);
+float circle_area(float r);
+float circle_circumference(float r);
 
 #endif // MATH_H

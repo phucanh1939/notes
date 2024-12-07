@@ -1,6 +1,6 @@
 # Code to Execution (JavaScript)
 
-Javascript will be compiled just in runtime
+There is no compiling to an platform-independent bytecode/IL instructions like java or C#. Javascript itself is an platform-independent instructions.
 
 ## Runing process
 
