@@ -2,7 +2,9 @@
 
 This note explains how a program written in a high-level language is converted into an executable file and how this file is loaded and run on a computer. While the exact process may differ between programming languages and platforms, the general concepts remain consistent.
 
-## Compilation
+## Compilation process
+
+### Compiler
 
 Each source code file is compiled separately into assembly by the compiler. The compilation process typically involves the following stages:
 
@@ -29,13 +31,15 @@ Each source code file is compiled separately into assembly by the compiler. The 
 7. Code Generation:
 - Converts the optimized IR into assembly language specific to the target architecture.
 
-## Assembler
+### Assembler
 
 The assembler converts assembly code into machine instructions and generates an object file that contains: **Binary instructions** and **Metadata for linking** (Symbols, Relocation information)
 
-### General Object File Structure
+#### General Object File Structure
 
-#### 1. Header
+An object file stores machine language instructions, data and information needed to place instructions properly in memory.
+
+##### 1. Header
 - Provides basic information about the file.
 - Includes:
   - File format/type (e.g., ELF, Mach-O, PE/COFF).
@@ -44,7 +48,7 @@ The assembler converts assembly code into machine instructions and generates an 
   - Versioning.
   - High-level structural metadata (e.g., offsets to tables like the symbol table, relocation sections).
 
-#### 2. Segments
+##### 2. Segments
 - High-level groups of **sections**.
 - Represent logical regions such as:
   - Code.
@@ -54,7 +58,7 @@ The assembler converts assembly code into machine instructions and generates an 
   - In **ELF**, segments are defined in the **program header table**.
   - In **Mach-O**, segments are defined in **load commands** (this is a part of the object file come after the header).
 
-### 3. Sections
+##### 3. Sections
 - Contain the actual data (e.g., binary instructions, variables, constants).
 - Examples:
   - `.text` → Code (binary instructions).
@@ -62,17 +66,20 @@ The assembler converts assembly code into machine instructions and generates an 
   - `.bss` → Uninitialized global variables.
   - `.rodata` → Read-only data.
 
-### 4. Relocation Entries
+##### 4. Relocation Entries
 - Defined in a special section **relocation sections** (e.g., `.rel.text` in ELF).
 - Specify what needs to be adjusted (e.g., symbol addresses, offsets).
 - Guide the linker on address adjustments when combining object files.
 
-### 5. Symbol Table
+##### 5. Symbol Table
 - Lists all symbols in the file, including: Functions. Global variables. External references.
 - Used by the linker to resolve references between object files.
 - Typically stored in a dedicated section (e.g., `.symtab` in ELF or the COFF symbol table).
 
-## Linker
+##### 6. The debugging information 
+- Contains a concise description of how the modules were compiled so that a debugger can associate machine instructions with C source files and make data structures readable
+
+### Linker
 
 The **linker** combines object files to create an executable program. The linking proces:
 
@@ -82,7 +89,9 @@ The **linker** combines object files to create an executable program. The linkin
 
 - Relocate Addresses: Adjusts symbol addresses and offsets to map correctly into the program's **virtual address space** (This virtual address space is where the operating system loads the program during execution).
 
-## Loader
+## Runing the executable
+
+### Loader
 
 The **loader** is a part (a component) of OS responsible for preparing a program for execution. Its tasks include:
 
@@ -97,17 +106,22 @@ The **loader** is a part (a component) of OS responsible for preparing a program
     - Resolves addresses and performs any necessary relocations.
 
 - Prepare for Execution:
-   - Sets up the program's environment, including the stack and any arguments passed to the program.
-   - Transfers control to the program's entry point (e.g., `_start` or `main`) to begin execution.
+    - Sets up the program's environment, including the stack and any arguments passed to the program:
+        - Copies the parameters (if any) to the main program onto the stack.
+        - Initializes the machine registers and sets the stack pointer to the first free location
+    - Transfers control to the program's entry point (e.g., `_start` or `main`) to begin execution.
 
+-----------------------------------------------------------------------------------------------------------------------
 
-## Git repos
+## References
+
+### Git repos
 - clang: https://github.com/llvm/llvm-project.git
 - gcc: git://gcc.gnu.org/git/gcc.git
 - glibc(used to load dynamic linking libs on linux): git://sourceware.org/git/glibc.git 
 - linux kernel(includes execve - program loader): https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git 
 
-## Clang commands
+### Clang commands
 
 - **Print Preprocessing Output**:  
   `clang -E <file.c>`

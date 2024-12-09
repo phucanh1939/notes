@@ -16,12 +16,8 @@ When the JAR file is run on a machine using `java -jar abc.jar` (or when a user 
 
 2. **Bytecode Execution**:
   - The **Java Interpreter** begins executing bytecode instructions one by one from the entry point function.
-  - If the bytecode instruction has been compiled by the JIT compiler previously, the JVM directly executes the native binary instructions associated with that bytecode.
-  - If the bytecode instruction has not been JIT-compiled yet, the Java interpreter reads, parses, and executes the instruction. This may involve calling a specific function to handle the operation corresponding to the bytecode instruction.
-
-3. **Just-In-Time Compilation (JIT)**:
-  - During runing time of the java application, The **Just-In-Time (JIT) Compiler** compiles frequently executed Java bytecode into native machine instructions and stores the compiled binary instructions in memory.
-  - This process helps to optimize performance by reducing the need to interpret the bytecode repeatedly.
+  - JVM use **Just-In-Time (JIT) Compiler** to convert Java bytecode instruction to machine code and execute it.
+  - Additional, JVM monitors the execution of the program and identifies frequently executed code sections, known as "hot spots". Machine code for these hot spots will be cached and optimized for better performance
 
 4. **Other JVM Components**:
   - During the execution of the Java application, other parts of the JVM, such as **Garbage Collection (GC)**, may also be involved to manage memory and optimize performance.
