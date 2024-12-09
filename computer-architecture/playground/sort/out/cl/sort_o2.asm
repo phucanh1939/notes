@@ -20,27 +20,38 @@ $unwind$insertion_sort DD 020501H
 	DD	013405H
 xdata	ENDS
 ; Function compile flags: /Ogtpy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT main
 _TEXT	SEGMENT
 main	PROC						; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 25
+
+; 22   :     int arr[] = {7, 4, 5, 2, 6};
+; 23   :     int length = sizeof(arr) / sizeof(arr[0]);
+; 24   :     insertion_sort(arr, length);
+; 25   :     return 0;
+
 	xor	eax, eax
-; Line 26
+
+; 26   : }
+
 	ret	0
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT insertion_sort
 _TEXT	SEGMENT
 arr$ = 8
 length$ = 16
 insertion_sort PROC					; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 14
+
+; 14   : void insertion_sort(int arr[], int length) {
+
 $LN23:
 	mov	QWORD PTR [rsp+8], rbx
-; Line 15
+
+; 15   :     for (int i = 1; i < length; i++) {
+
 	movsxd	rbx, edx
 	mov	r8, rcx
 	cmp	rbx, 1
@@ -49,51 +60,75 @@ $LN23:
 	xor	r11d, r11d
 	npad	6
 $LL4@insertion_:
-; Line 16
+
+; 16   :         int value = arr[i];
+
 	mov	r10d, DWORD PTR [r8+r9*4]
-; Line 5
+
+; 5    :     int i = n - 1;
+
 	mov	edx, r11d
 	lea	rax, QWORD PTR [r9-1]
-; Line 6
+
+; 6    :     while (i >= 0 && arr[i] > value) {
+
 	test	r11d, r11d
 	js	SHORT $LN18@insertion_
 $LL7@insertion_:
 	mov	ecx, DWORD PTR [r8+rax*4]
 	cmp	ecx, r10d
 	jle	SHORT $LN18@insertion_
-; Line 7
+
+; 7    :         arr[i + 1] = arr[i];
+
 	mov	DWORD PTR [r8+rax*4+4], ecx
-; Line 8
+
+; 8    :         i--;
+
 	dec	rax
 	sub	edx, 1
 	jns	SHORT $LL7@insertion_
 $LN18@insertion_:
-; Line 15
+
+; 15   :     for (int i = 1; i < length; i++) {
+
 	inc	r11d
-; Line 10
+
+; 10   :     arr[i+1] = value;
+
 	mov	DWORD PTR [r8+rax*4+4], r10d
-; Line 15
+
+; 15   :     for (int i = 1; i < length; i++) {
+
 	inc	r9
 	cmp	r9, rbx
 	jl	SHORT $LL4@insertion_
 $LN3@insertion_:
-; Line 19
+
+; 17   :         insert_value(arr, i, value);
+; 18   :     }
+; 19   : }
+
 	mov	rbx, QWORD PTR [rsp+8]
 	ret	0
 insertion_sort ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogtpy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT insert_value
 _TEXT	SEGMENT
 arr$ = 8
 n$ = 16
 value$ = 24
 insert_value PROC					; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 5
+
+; 5    :     int i = n - 1;
+
 	lea	eax, DWORD PTR [rdx-1]
 	mov	r10, rcx
-; Line 6
+
+; 6    :     while (i >= 0 && arr[i] > value) {
+
 	test	eax, eax
 	js	SHORT $LN9@insert_val
 	movsxd	rdx, eax
@@ -102,14 +137,22 @@ $LL2@insert_val:
 	mov	edx, DWORD PTR [r9]
 	cmp	edx, r8d
 	jle	SHORT $LN9@insert_val
-; Line 7
+
+; 7    :         arr[i + 1] = arr[i];
+
 	mov	DWORD PTR [r9+4], edx
-; Line 8
+
+; 8    :         i--;
+
 	sub	r9, 4
 	sub	eax, 1
 	jns	SHORT $LL2@insert_val
 $LN9@insert_val:
-; Line 11
+
+; 9    :     }
+; 10   :     arr[i+1] = value;
+; 11   : }
+
 	movsxd	rcx, eax
 	mov	DWORD PTR [r10+rcx*4+4], r8d
 	ret	0

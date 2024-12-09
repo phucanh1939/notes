@@ -39,33 +39,45 @@ $unwind$main DD	011319H
 	DD	040H
 xdata	ENDS
 ; Function compile flags: /Odtp
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 _TEXT	SEGMENT
 length$ = 32
 arr$ = 40
 __$ArrayPad$ = 64
 main	PROC
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 21
+
+; 21   : int main() {
+
 $LN3:
 	sub	rsp, 88					; 00000058H
 	mov	rax, QWORD PTR __security_cookie
 	xor	rax, rsp
 	mov	QWORD PTR __$ArrayPad$[rsp], rax
-; Line 22
+
+; 22   :     int arr[] = {7, 4, 5, 2, 6};
+
 	mov	DWORD PTR arr$[rsp], 7
 	mov	DWORD PTR arr$[rsp+4], 4
 	mov	DWORD PTR arr$[rsp+8], 5
 	mov	DWORD PTR arr$[rsp+12], 2
 	mov	DWORD PTR arr$[rsp+16], 6
-; Line 23
+
+; 23   :     int length = sizeof(arr) / sizeof(arr[0]);
+
 	mov	DWORD PTR length$[rsp], 5
-; Line 24
+
+; 24   :     insertion_sort(arr, length);
+
 	mov	edx, DWORD PTR length$[rsp]
 	lea	rcx, QWORD PTR arr$[rsp]
 	call	insertion_sort
-; Line 25
+
+; 25   :     return 0;
+
 	xor	eax, eax
-; Line 26
+
+; 26   : }
+
 	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
 	xor	rcx, rsp
 	call	__security_check_cookie
@@ -74,19 +86,23 @@ $LN3:
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Odtp
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 _TEXT	SEGMENT
 i$1 = 32
 value$2 = 36
 arr$ = 64
 length$ = 72
 insertion_sort PROC
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 14
+
+; 14   : void insertion_sort(int arr[], int length) {
+
 $LN6:
 	mov	DWORD PTR [rsp+16], edx
 	mov	QWORD PTR [rsp+8], rcx
 	sub	rsp, 56					; 00000038H
-; Line 15
+
+; 15   :     for (int i = 1; i < length; i++) {
+
 	mov	DWORD PTR i$1[rsp], 1
 	jmp	SHORT $LN4@insertion_
 $LN2@insertion_:
@@ -97,78 +113,118 @@ $LN4@insertion_:
 	mov	eax, DWORD PTR length$[rsp]
 	cmp	DWORD PTR i$1[rsp], eax
 	jge	SHORT $LN3@insertion_
-; Line 16
+
+; 16   :         int value = arr[i];
+
 	movsxd	rax, DWORD PTR i$1[rsp]
 	mov	rcx, QWORD PTR arr$[rsp]
 	mov	eax, DWORD PTR [rcx+rax*4]
 	mov	DWORD PTR value$2[rsp], eax
-; Line 17
+
+; 17   :         insert_value(arr, i, value);
+
 	mov	r8d, DWORD PTR value$2[rsp]
 	mov	edx, DWORD PTR i$1[rsp]
 	mov	rcx, QWORD PTR arr$[rsp]
 	call	insert_value
 	npad	1
-; Line 18
+
+; 18   :     }
+
 	jmp	SHORT $LN2@insertion_
 $LN3@insertion_:
-; Line 19
+
+; 19   : }
+
 	add	rsp, 56					; 00000038H
 	ret	0
 insertion_sort ENDP
 _TEXT	ENDS
 ; Function compile flags: /Odtp
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 _TEXT	SEGMENT
 i$ = 0
 arr$ = 32
 n$ = 40
 value$ = 48
 insert_value PROC
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 4
+
+; 4    : void insert_value(int arr[], int n, int value) {
 $LN5:
-	mov	DWORD PTR [rsp+24], r8d
-	mov	DWORD PTR [rsp+16], edx
-	mov	QWORD PTR [rsp+8], rcx
-	sub	rsp, 24
-; Line 5
-	mov	eax, DWORD PTR n$[rsp]
-	dec	eax
-	mov	DWORD PTR i$[rsp], eax
+	mov	DWORD PTR [rsp+24], r8d			; [rsp+24] = r8d = value
+	mov	DWORD PTR [rsp+16], edx			; [rsp+16] = edx = n
+	mov	QWORD PTR [rsp+8], rcx			; [rsp+8] = rcx = arr
+	sub	rsp, 24							; rsp = rsp - 24; // Why allocate 24 bytes on stack here
+										; // Stack on x64 intel allocated by 16-bytes blocks
+										; // Minimun allocation is 24 bytes (WHY?)
+										; after this 24 bytes allocate on rsp
+										; arr is now at [rsp+8+24] = [rsp+32]
+										; n is at [rsp+16+24] = [rsp+40]
+										; value is at [rsp+24+24] = [rsp+48]
+
+; 5    :     int i = n - 1;
+
+	mov	eax, DWORD PTR n$[rsp]			; eax = n
+	dec	eax								; eax = eax - 1
+	mov	DWORD PTR i$[rsp], eax			; [rsp+0] = i
 $LN2@insert_val:
-; Line 6
-	cmp	DWORD PTR i$[rsp], 0
-	jl	SHORT $LN3@insert_val
-	movsxd	rax, DWORD PTR i$[rsp]
-	mov	rcx, QWORD PTR arr$[rsp]
-	mov	edx, DWORD PTR value$[rsp]
-	cmp	DWORD PTR [rcx+rax*4], edx
-	jle	SHORT $LN3@insert_val
-; Line 7
-	movsxd	rax, DWORD PTR i$[rsp]
-	mov	ecx, DWORD PTR i$[rsp]
-	inc	ecx
-	movsxd	rcx, ecx
-	mov	rdx, QWORD PTR arr$[rsp]
-	mov	r8, QWORD PTR arr$[rsp]
-	mov	eax, DWORD PTR [r8+rax*4]
-	mov	DWORD PTR [rdx+rcx*4], eax
-; Line 8
-	mov	eax, DWORD PTR i$[rsp]
-	dec	eax
-	mov	DWORD PTR i$[rsp], eax
-; Line 9
-	jmp	SHORT $LN2@insert_val
+
+; 6    :     while (i >= 0 && arr[i] > value) {
+
+	cmp	DWORD PTR i$[rsp], 0			; if i == 0, ZF = 1 and SF = 0 (clear)
+										; if i > 0, ZF = 0 and SF = 0 (clear)
+										; if i < 0, ZF = 0 and SF = 1
+										; ZF = zero flag - a flag in EFLAGS register
+										; SF = Sign flag - a flag in EFLAGS register. in this case sign of (i - 0). Therefore, i < 0 lead to negative result which has sign flag 1
+
+	jl	SHORT $LN3@insert_val			; jl = jump if less
+										; Jump happens when SF != OF
+										; OF (Overflow Flag): Indicates if an arithmetic overflow has occurred (i.e., if the result exceeded the maximum or minimum value for signed integers).
+										; SF != OF happens when the result of the last cmp instruction (i - 0) is not overlow and has negative result, or overlow happens and the result is positive
+										; Jump to $LN3@insert_val if (i < 0) => Break the while loop if i < 0
+
+	movsxd	rax, DWORD PTR i$[rsp]		; rax = i // rax is 64-bit register, so we need sign-extend move
+	mov	rcx, QWORD PTR arr$[rsp]		; rcx = arr // arr address is always positive so no need to do sign-extend move
+	mov	edx, DWORD PTR value$[rsp]		; edx = value // edx is 32bit of rdx => no need sign-extend
+	cmp	DWORD PTR [rcx+rax*4], edx		; compare arr[i] and value 
+	jle	SHORT $LN3@insert_val			; jump to exit while loop if arr[i] <= value 
+										; jle jump if: ZF == 1 or SF != OF
+
+; 7    :         arr[i + 1] = arr[i];
+
+	movsxd	rax, DWORD PTR i$[rsp]		; rax = i // rax is 64-bit register, so we need sign-extend move
+	mov	ecx, DWORD PTR i$[rsp]			; ecx = i // ecx is the lower 32 bits of the rcx register, so no need to sign-extend
+	inc	ecx								; ecx = i + 1;
+	movsxd	rcx, ecx					; rcx = i + 1; this just do sign extend on rcx because ecx and rcx is just the same register
+	mov	rdx, QWORD PTR arr$[rsp]		; rdx = arr
+	mov	r8, QWORD PTR arr$[rsp]			; r8 = arr
+	mov	eax, DWORD PTR [r8+rax*4]		; eax = arr[i]
+	mov	DWORD PTR [rdx+rcx*4], eax		; arr[i + 1] = eax = arr[i]
+
+; 8    :         i--;
+
+	mov	eax, DWORD PTR i$[rsp]			; eax = i
+	dec	eax								; eax = eax - 1
+	mov	DWORD PTR i$[rsp], eax			; i = eax = i-1
+
+; 9    :     }
+
+	jmp	SHORT $LN2@insert_val			; jump back to while check
 $LN3@insert_val:
-; Line 10
-	mov	eax, DWORD PTR i$[rsp]
-	inc	eax
-	cdqe
-	mov	rcx, QWORD PTR arr$[rsp]
-	mov	edx, DWORD PTR value$[rsp]
-	mov	DWORD PTR [rcx+rax*4], edx
-; Line 11
-	add	rsp, 24
-	ret	0
+
+; 10   :     arr[i+1] = value;
+
+	mov	eax, DWORD PTR i$[rsp]			; eax = i
+	inc	eax								; eax = eax + 1
+	cdqe								; rax = i + 1, sign extend on eax/rax
+	mov	rcx, QWORD PTR arr$[rsp]		; rcx = arr
+	mov	edx, DWORD PTR value$[rsp]		; edx = value
+	mov	DWORD PTR [rcx+rax*4], edx		; arr[i + 1] = value
+
+; 11   : }
+
+	add	rsp, 24							; Deallocate 24 byte on rsp
+	ret	0								; return
 insert_value ENDP
 _TEXT	ENDS
 END

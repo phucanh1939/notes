@@ -45,29 +45,40 @@ $unwind$insertion_sort DD 081401H
 	DD	070103214H
 xdata	ENDS
 ; Function compile flags: /Ogspy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT main
 _TEXT	SEGMENT
 arr$ = 32
 __$ArrayPad$ = 56
 main	PROC						; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 21
+
+; 21   : int main() {
+
 $LN4:
 	sub	rsp, 72					; 00000048H
 	mov	rax, QWORD PTR __security_cookie
 	xor	rax, rsp
 	mov	QWORD PTR __$ArrayPad$[rsp], rax
-; Line 22
+
+; 22   :     int arr[] = {7, 4, 5, 2, 6};
+
 	movdqa	xmm0, XMMWORD PTR __xmm@00000002000000050000000400000007
-; Line 24
+
+; 23   :     int length = sizeof(arr) / sizeof(arr[0]);
+; 24   :     insertion_sort(arr, length);
+
 	lea	rcx, QWORD PTR arr$[rsp]
 	mov	edx, 5
 	mov	DWORD PTR arr$[rsp+16], 6
 	movdqu	XMMWORD PTR arr$[rsp], xmm0
 	call	insertion_sort
-; Line 25
+
+; 25   :     return 0;
+
 	xor	eax, eax
-; Line 26
+
+; 26   : }
+
 	mov	rcx, QWORD PTR __$ArrayPad$[rsp]
 	xor	rcx, rsp
 	call	__security_check_cookie
@@ -76,20 +87,24 @@ $LN4:
 main	ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogspy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT insertion_sort
 _TEXT	SEGMENT
 arr$ = 48
 length$ = 56
 insertion_sort PROC					; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 14
+
+; 14   : void insertion_sort(int arr[], int length) {
+
 $LN11:
 	mov	QWORD PTR [rsp+8], rbx
 	mov	QWORD PTR [rsp+16], rbp
 	mov	QWORD PTR [rsp+24], rsi
 	push	rdi
 	sub	rsp, 32					; 00000020H
-; Line 15
+
+; 15   :     for (int i = 1; i < length; i++) {
+
 	mov	ebx, 1
 	mov	ebp, edx
 	mov	rsi, rcx
@@ -97,7 +112,10 @@ $LN11:
 	jle	SHORT $LN3@insertion_
 	lea	rdi, QWORD PTR [rcx+4]
 $LL4@insertion_:
-; Line 17
+
+; 16   :         int value = arr[i];
+; 17   :         insert_value(arr, i, value);
+
 	mov	r8d, DWORD PTR [rdi]
 	mov	edx, ebx
 	mov	rcx, rsi
@@ -107,7 +125,10 @@ $LL4@insertion_:
 	cmp	ebx, ebp
 	jl	SHORT $LL4@insertion_
 $LN3@insertion_:
-; Line 19
+
+; 18   :     }
+; 19   : }
+
 	mov	rbx, QWORD PTR [rsp+48]
 	mov	rbp, QWORD PTR [rsp+56]
 	mov	rsi, QWORD PTR [rsp+64]
@@ -117,34 +138,51 @@ $LN3@insertion_:
 insertion_sort ENDP
 _TEXT	ENDS
 ; Function compile flags: /Ogspy
+; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
 ;	COMDAT insert_value
 _TEXT	SEGMENT
 arr$ = 8
 n$ = 16
 value$ = 24
 insert_value PROC					; COMDAT
-; File D:\personal-space\notes\computer-architecture\playground\sort\src\sort.c
-; Line 5
-	sub	edx, 1
-; Line 6
-	js	SHORT $LN3@insert_val
-	movsxd	rax, edx
-	lea	r9, QWORD PTR [rcx+rax*4]
+
+	; rcx = arr
+	; edx = n
+	; r8d = value
+
+; 5    :     int i = n - 1;
+
+	sub	edx, 1								; edx = n - 1 = i
+
+; 6    :     while (i >= 0 && arr[i] > value) {
+
+	js	SHORT $LN3@insert_val			; Jump to exit while if SF = 1 (mean n < 1 or i < 0)	
+	movsxd	rax, edx					; rax = edx = i
+	lea	r9, QWORD PTR [rcx+rax*4]		; r9 = arr + i * 4  = address of arr[i]
 $LL2@insert_val:
-	mov	eax, DWORD PTR [r9]
-	cmp	eax, r8d
-	jle	SHORT $LN3@insert_val
-; Line 7
-	mov	DWORD PTR [r9+4], eax
-; Line 8
-	sub	r9, 4
-	sub	edx, 1
-	jns	SHORT $LL2@insert_val
+	mov	eax, DWORD PTR [r9]				; eax = arr[i]
+	cmp	eax, r8d						; compare arr[i] with value
+	jle	SHORT $LN3@insert_val			; Exit while loop if arr[i] <= value
+
+; 7    :         arr[i + 1] = arr[i];
+
+	mov	DWORD PTR [r9+4], eax			; arr[i+1] = arr[i]
+
+; 8    :         i--;
+
+	sub	r9, 4							; r9 = address of a[i-1]
+	sub	edx, 1							; edx = i - 1 (this will set SF)
+	jns	SHORT $LL2@insert_val			; Jump to LL2 if SF = 0 (this will make sure i >= 0, because SF == 1 only if i < 1 which make edx = i - 1 < 0)
 $LN3@insert_val:
-; Line 10
-	movsxd	rax, edx
-	mov	DWORD PTR [rcx+rax*4+4], r8d
-; Line 11
+
+; 9    :     }
+; 10   :     arr[i+1] = value;
+
+	movsxd	rax, edx					; rax = edx = i
+	mov	DWORD PTR [rcx+rax*4+4], r8d	; arr[i + 1] = r8d = value
+
+; 11   : }
+
 	ret	0
 insert_value ENDP
 _TEXT	ENDS
