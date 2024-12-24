@@ -1,159 +1,150 @@
-	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 13, 0	sdk_version 13, 3
-	.globl	_insert_value                   ; -- Begin function insert_value
-	.p2align	2
-_insert_value:                          ; @insert_value
-	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #32
-	.cfi_def_cfa_offset 32
-	str	x0, [sp, #24]
-	str	w1, [sp, #20]
-	str	w2, [sp, #16]
-	ldr	w8, [sp, #20]
-	subs	w8, w8, #1
-	str	w8, [sp, #12]
-	b	LBB0_1
-LBB0_1:                                 ; =>This Inner Loop Header: Depth=1
-	ldr	w8, [sp, #12]
-	subs	w8, w8, #0
-	cset	w8, lt
-	mov	w9, #0
-	str	w9, [sp, #8]                    ; 4-byte Folded Spill
-	tbnz	w8, #0, LBB0_3
-	b	LBB0_2
-LBB0_2:                                 ;   in Loop: Header=BB0_1 Depth=1
-	ldr	x8, [sp, #24]
-	ldrsw	x9, [sp, #12]
-	ldr	w8, [x8, x9, lsl #2]
-	ldr	w9, [sp, #16]
-	subs	w8, w8, w9
-	cset	w8, gt
-	str	w8, [sp, #8]                    ; 4-byte Folded Spill
-	b	LBB0_3
-LBB0_3:                                 ;   in Loop: Header=BB0_1 Depth=1
-	ldr	w8, [sp, #8]                    ; 4-byte Folded Reload
-	tbz	w8, #0, LBB0_5
-	b	LBB0_4
-LBB0_4:                                 ;   in Loop: Header=BB0_1 Depth=1
-	ldr	x8, [sp, #24]
-	ldrsw	x9, [sp, #12]
-	ldr	w8, [x8, x9, lsl #2]
-	ldr	x9, [sp, #24]
-	ldr	w10, [sp, #12]
-	add	w10, w10, #1
-	str	w8, [x9, w10, sxtw #2]
-	ldr	w8, [sp, #12]
-	subs	w8, w8, #1
-	str	w8, [sp, #12]
-	b	LBB0_1
-LBB0_5:
-	ldr	w8, [sp, #16]
-	ldr	x9, [sp, #24]
-	ldr	w10, [sp, #12]
-	add	w10, w10, #1
-	str	w8, [x9, w10, sxtw #2]
-	add	sp, sp, #32
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	_insertion_sort                 ; -- Begin function insertion_sort
-	.p2align	2
-_insertion_sort:                        ; @insertion_sort
-	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #48
-	.cfi_def_cfa_offset 48
-	stp	x29, x30, [sp, #32]             ; 16-byte Folded Spill
-	add	x29, sp, #32
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	stur	x0, [x29, #-8]
-	stur	w1, [x29, #-12]
-	mov	w8, #1
-	str	w8, [sp, #16]
-	b	LBB1_1
-LBB1_1:                                 ; =>This Inner Loop Header: Depth=1
-	ldr	w8, [sp, #16]
-	ldur	w9, [x29, #-12]
-	subs	w8, w8, w9
-	cset	w8, ge
-	tbnz	w8, #0, LBB1_4
-	b	LBB1_2
-LBB1_2:                                 ;   in Loop: Header=BB1_1 Depth=1
-	ldur	x8, [x29, #-8]
-	ldrsw	x9, [sp, #16]
-	ldr	w8, [x8, x9, lsl #2]
-	str	w8, [sp, #12]
-	ldur	x0, [x29, #-8]
-	ldr	w1, [sp, #16]
-	ldr	w2, [sp, #12]
-	bl	_insert_value
-	b	LBB1_3
-LBB1_3:                                 ;   in Loop: Header=BB1_1 Depth=1
-	ldr	w8, [sp, #16]
-	add	w8, w8, #1
-	str	w8, [sp, #16]
-	b	LBB1_1
-LBB1_4:
-	ldp	x29, x30, [sp, #32]             ; 16-byte Folded Reload
-	add	sp, sp, #48
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	_main                           ; -- Begin function main
-	.p2align	2
-_main:                                  ; @main
-	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #64
-	.cfi_def_cfa_offset 64
-	stp	x29, x30, [sp, #48]             ; 16-byte Folded Spill
-	add	x29, sp, #48
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	adrp	x8, ___stack_chk_guard@GOTPAGE
-	ldr	x8, [x8, ___stack_chk_guard@GOTPAGEOFF]
-	ldr	x8, [x8]
-	stur	x8, [x29, #-8]
-	str	wzr, [sp, #12]
-	adrp	x8, l___const.main.arr@PAGE
-	add	x8, x8, l___const.main.arr@PAGEOFF
-	ldr	q0, [x8]
-	add	x0, sp, #16
-	str	q0, [sp, #16]
-	ldr	w8, [x8, #16]
-	str	w8, [sp, #32]
-	mov	w8, #5
-	str	w8, [sp, #8]
-	ldr	w1, [sp, #8]
-	bl	_insertion_sort
-	ldur	x9, [x29, #-8]
-	adrp	x8, ___stack_chk_guard@GOTPAGE
-	ldr	x8, [x8, ___stack_chk_guard@GOTPAGEOFF]
-	ldr	x8, [x8]
-	subs	x8, x8, x9
-	cset	w8, eq
-	tbnz	w8, #0, LBB2_2
-	b	LBB2_1
-LBB2_1:
-	bl	___stack_chk_fail
-LBB2_2:
-	mov	w0, #0
-	ldp	x29, x30, [sp, #48]             ; 16-byte Folded Reload
-	add	sp, sp, #64
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.section	__TEXT,__const
-	.p2align	2                               ; @__const.main.arr
-l___const.main.arr:
-	.long	7                               ; 0x7
-	.long	4                               ; 0x4
-	.long	5                               ; 0x5
-	.long	2                               ; 0x2
-	.long	6                               ; 0x6
+	.text
+	.def	@feat.00;
+	.scl	3;
+	.type	0;
+	.endef
+	.globl	@feat.00
+.set @feat.00, 0
+	.file	"sort.c"
+	.def	insert_value;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	insert_value                    # -- Begin function insert_value
+	.p2align	4, 0x90
+insert_value:                           # @insert_value
+.seh_proc insert_value
+# %bb.0:
+	subq	$24, %rsp
+	.seh_stackalloc 24
+	.seh_endprologue
+	movl	%r8d, 20(%rsp)				# [rsp + 20] = r8d = value
+	movl	%edx, 16(%rsp)				# [rsp + 16] = edx = n
+	movq	%rcx, 8(%rsp)				# [rsp + 8] = rcx = arr
+	movl	16(%rsp), %eax				# eax = [rsp + 16] = n
+	subl	$1, %eax					# eax = eax - 1 = n - 1 = i
+	movl	%eax, 4(%rsp)				# [rsp + 4] = i
+.LBB0_1:                                # =>This Inner Loop Header: Depth=1
+	xorl	%eax, %eax					# eax = 0, ZF = 1 (zero flag)
+                                        # kill: def $al killed $al killed $eax
+	cmpl	$0, 4(%rsp)
+	movb	%al, 3(%rsp)                    # 1-byte Spill
+	jl	.LBB0_3
+# %bb.2:                                #   in Loop: Header=BB0_1 Depth=1
+	movq	8(%rsp), %rax
+	movslq	4(%rsp), %rcx
+	movl	(%rax,%rcx,4), %eax
+	cmpl	20(%rsp), %eax
+	setg	%al
+	movb	%al, 3(%rsp)                    # 1-byte Spill
+.LBB0_3:                                #   in Loop: Header=BB0_1 Depth=1
+	movb	3(%rsp), %al                    # 1-byte Reload
+	testb	$1, %al
+	jne	.LBB0_4
+	jmp	.LBB0_5
+.LBB0_4:                                #   in Loop: Header=BB0_1 Depth=1
+	movq	8(%rsp), %rax
+	movslq	4(%rsp), %rcx
+	movl	(%rax,%rcx,4), %edx
+	movq	8(%rsp), %rax
+	movl	4(%rsp), %ecx
+	addl	$1, %ecx
+	movslq	%ecx, %rcx
+	movl	%edx, (%rax,%rcx,4)
+	movl	4(%rsp), %eax
+	addl	$-1, %eax
+	movl	%eax, 4(%rsp)
+	jmp	.LBB0_1
+.LBB0_5:
+	movl	20(%rsp), %edx
+	movq	8(%rsp), %rax
+	movl	4(%rsp), %ecx
+	addl	$1, %ecx
+	movslq	%ecx, %rcx
+	movl	%edx, (%rax,%rcx,4)
+	addq	$24, %rsp
+	retq
+	.seh_endproc
+                                        # -- End function
+	.def	insertion_sort;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	insertion_sort                  # -- Begin function insertion_sort
+	.p2align	4, 0x90
+insertion_sort:                         # @insertion_sort
 
-.subsections_via_symbols
+# rcx = arr
+# edx = length
+
+.seh_proc insertion_sort
+# %bb.0:
+	subq	$56, %rsp
+	.seh_stackalloc 56
+	.seh_endprologue
+	movl	%edx, 52(%rsp)				# [rsp + 52] = edx
+	movq	%rcx, 40(%rsp)				# [rsp + 40] = rcx
+	movl	$1, 36(%rsp)
+.LBB1_1:                                # =>This Inner Loop Header: Depth=1
+	movl	36(%rsp), %eax
+	cmpl	52(%rsp), %eax
+	jge	.LBB1_4
+# %bb.2:                                #   in Loop: Header=BB1_1 Depth=1
+	movq	40(%rsp), %rax
+	movslq	36(%rsp), %rcx
+	movl	(%rax,%rcx,4), %eax
+	movl	%eax, 32(%rsp)
+	movl	32(%rsp), %r8d
+	movl	36(%rsp), %edx
+	movq	40(%rsp), %rcx
+	callq	insert_value
+# %bb.3:                                #   in Loop: Header=BB1_1 Depth=1
+	movl	36(%rsp), %eax
+	addl	$1, %eax
+	movl	%eax, 36(%rsp)
+	jmp	.LBB1_1
+.LBB1_4:
+	addq	$56, %rsp
+	retq
+	.seh_endproc
+                                        # -- End function
+	.def	main;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	main                            # -- Begin function main
+	.p2align	4, 0x90
+main:                                   # @main
+.seh_proc main
+# %bb.0:
+	subq	$72, %rsp
+	.seh_stackalloc 72
+	.seh_endprologue
+	movl	$0, 68(%rsp)
+	movq	.L__const.main.arr(%rip), %rax	
+	movq	%rax, 48(%rsp)
+	movq	.L__const.main.arr+8(%rip), %rax
+	movq	%rax, 56(%rsp)
+	movl	.L__const.main.arr+16(%rip), %eax
+	movl	%eax, 64(%rsp)
+	movl	$5, 44(%rsp)
+	movl	44(%rsp), %edx
+	leaq	48(%rsp), %rcx
+	callq	insertion_sort
+	xorl	%eax, %eax
+	addq	$72, %rsp
+	retq
+	.seh_endproc
+                                        # -- End function
+	.section	.rdata,"dr"
+	.p2align	4, 0x0                          # @__const.main.arr
+.L__const.main.arr:
+	.long	7                               # 0x7
+	.long	4                               # 0x4
+	.long	5                               # 0x5
+	.long	2                               # 0x2
+	.long	6                               # 0x6
+
+	.addrsig
+	.addrsig_sym insert_value
+	.addrsig_sym insertion_sort

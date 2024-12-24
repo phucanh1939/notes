@@ -1,169 +1,141 @@
-	.section	__TEXT,__text,regular,pure_instructions
-	.build_version macos, 13, 0	sdk_version 13, 3
-	.globl	_insert_value                   ; -- Begin function insert_value
-	.p2align	2
-_insert_value:                          ; @insert_value
-	.cfi_startproc
-; %bb.0:
-                                        ; kill: def $w1 killed $w1 def $x1
-	cmp	w1, #1
-	b.lt	LBB0_5
-; %bb.1:
-	sxtw	x1, w1
-LBB0_2:                                 ; =>This Inner Loop Header: Depth=1
-	add	x8, x0, x1, lsl #2
-	ldur	w8, [x8, #-4]
-	cmp	w8, w2
-	b.le	LBB0_6
-; %bb.3:                                ;   in Loop: Header=BB0_2 Depth=1
-	str	w8, [x0, x1, lsl #2]
-	sub	x1, x1, #1
-	add	x8, x1, #1
-	cmp	x8, #1
-	b.gt	LBB0_2
-; %bb.4:
-	mov	w1, #0
-LBB0_5:
-	str	w2, [x0, w1, sxtw #2]
-	ret
-LBB0_6:
-                                        ; kill: def $w1 killed $w1 killed $x1 def $x1
-	str	w2, [x0, w1, sxtw #2]
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	_insertion_sort                 ; -- Begin function insertion_sort
-	.p2align	2
-_insertion_sort:                        ; @insertion_sort
-	.cfi_startproc
-; %bb.0:
-	cmp	w1, #2
-	b.lt	LBB1_8
-; %bb.1:
-	mov	x8, #0
-	mov	w9, w1
-	mov	w10, #1
-	b	LBB1_4
-LBB1_2:                                 ;   in Loop: Header=BB1_4 Depth=1
-	add	x12, x12, #1
-LBB1_3:                                 ;   in Loop: Header=BB1_4 Depth=1
-	sbfiz	x12, x12, #2, #32
-	str	w11, [x0, x12]
-	add	x10, x10, #1
-	add	x8, x8, #1
-	cmp	x10, x9
-	b.eq	LBB1_8
-LBB1_4:                                 ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB1_5 Depth 2
-	ldr	w11, [x0, x10, lsl #2]
-	mov	x12, x8
-LBB1_5:                                 ;   Parent Loop BB1_4 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	ldr	w13, [x0, x12, lsl #2]
-	cmp	w13, w11
-	b.le	LBB1_2
-; %bb.6:                                ;   in Loop: Header=BB1_5 Depth=2
-	add	x14, x0, x12, lsl #2
-	str	w13, [x14, #4]
-	add	x13, x12, #1
-	sub	x12, x12, #1
-	cmp	x13, #1
-	b.gt	LBB1_5
-; %bb.7:                                ;   in Loop: Header=BB1_4 Depth=1
-	mov	x12, #0
-	b	LBB1_3
-LBB1_8:
-	ret
-	.cfi_endproc
-                                        ; -- End function
-	.globl	_main                           ; -- Begin function main
-	.p2align	2
-_main:                                  ; @main
-	.cfi_startproc
-; %bb.0:
-	sub	sp, sp, #48
-	.cfi_def_cfa_offset 48
-	stp	x29, x30, [sp, #32]             ; 16-byte Folded Spill
-	add	x29, sp, #32
-	.cfi_def_cfa w29, 16
-	.cfi_offset w30, -8
-	.cfi_offset w29, -16
-	mov	x8, #0
-Lloh0:
-	adrp	x9, ___stack_chk_guard@GOTPAGE
-Lloh1:
-	ldr	x9, [x9, ___stack_chk_guard@GOTPAGEOFF]
-Lloh2:
-	ldr	x9, [x9]
-	stur	x9, [x29, #-8]
-Lloh3:
-	adrp	x9, l___const.main.arr@PAGE
-Lloh4:
-	add	x9, x9, l___const.main.arr@PAGEOFF
-	ldr	q0, [x9]
-	str	q0, [sp]
-	ldr	w9, [x9, #16]
-	str	w9, [sp, #16]
-	mov	w9, #1
-	mov	x10, sp
-	b	LBB2_3
-LBB2_1:                                 ;   in Loop: Header=BB2_3 Depth=1
-	add	x12, x12, #1
-LBB2_2:                                 ;   in Loop: Header=BB2_3 Depth=1
-	sbfiz	x12, x12, #2, #32
-	str	w11, [x10, x12]
-	add	x9, x9, #1
-	add	x8, x8, #1
-	cmp	x9, #5
-	b.eq	LBB2_7
-LBB2_3:                                 ; =>This Loop Header: Depth=1
-                                        ;     Child Loop BB2_4 Depth 2
-	ldr	w11, [x10, x9, lsl #2]
-	mov	x12, x8
-LBB2_4:                                 ;   Parent Loop BB2_3 Depth=1
-                                        ; =>  This Inner Loop Header: Depth=2
-	ldr	w13, [x10, x12, lsl #2]
-	cmp	w13, w11
-	b.le	LBB2_1
-; %bb.5:                                ;   in Loop: Header=BB2_4 Depth=2
-	add	x14, x10, x12, lsl #2
-	str	w13, [x14, #4]
-	add	x13, x12, #1
-	sub	x12, x12, #1
-	cmp	x13, #1
-	b.gt	LBB2_4
-; %bb.6:                                ;   in Loop: Header=BB2_3 Depth=1
-	mov	x12, #0
-	b	LBB2_2
-LBB2_7:
-	ldur	x8, [x29, #-8]
-Lloh5:
-	adrp	x9, ___stack_chk_guard@GOTPAGE
-Lloh6:
-	ldr	x9, [x9, ___stack_chk_guard@GOTPAGEOFF]
-Lloh7:
-	ldr	x9, [x9]
-	cmp	x9, x8
-	b.ne	LBB2_9
-; %bb.8:
-	mov	w0, #0
-	ldp	x29, x30, [sp, #32]             ; 16-byte Folded Reload
-	add	sp, sp, #48
-	ret
-LBB2_9:
-	bl	___stack_chk_fail
-	.loh AdrpAdd	Lloh3, Lloh4
-	.loh AdrpLdrGotLdr	Lloh0, Lloh1, Lloh2
-	.loh AdrpLdrGotLdr	Lloh5, Lloh6, Lloh7
-	.cfi_endproc
-                                        ; -- End function
-	.section	__TEXT,__const
-	.p2align	2                               ; @__const.main.arr
-l___const.main.arr:
-	.long	7                               ; 0x7
-	.long	4                               ; 0x4
-	.long	5                               ; 0x5
-	.long	2                               ; 0x2
-	.long	6                               ; 0x6
+	.text
+	.def	@feat.00;
+	.scl	3;
+	.type	0;
+	.endef
+	.globl	@feat.00
+.set @feat.00, 0
+	.file	"sort.c"
+	.def	insert_value;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	insert_value                    # -- Begin function insert_value
+	.p2align	4, 0x90
+insert_value:                           # @insert_value
+# %bb.0:
+                                        # kill: def $edx killed $edx def $rdx
+	testl	%edx, %edx
+	jle	.LBB0_5
+# %bb.1:
+	movl	%edx, %edx
+	.p2align	4, 0x90
+.LBB0_2:                                # =>This Inner Loop Header: Depth=1
+	movl	-4(%rcx,%rdx,4), %eax
+	cmpl	%r8d, %eax
+	jle	.LBB0_5
+# %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
+	movl	%eax, (%rcx,%rdx,4)
+	decq	%rdx
+	leaq	1(%rdx), %rax
+	cmpq	$1, %rax
+	jg	.LBB0_2
+# %bb.4:
+	xorl	%edx, %edx
+.LBB0_5:
+	movslq	%edx, %rax
+	movl	%r8d, (%rcx,%rax,4)
+	retq
+                                        # -- End function
+	.def	insertion_sort;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	insertion_sort                  # -- Begin function insertion_sort
+	.p2align	4, 0x90
+insertion_sort:                         # @insertion_sort
+# %bb.0:
+	cmpl	$2, %edx
+	jl	.LBB1_7
+# %bb.1:
+	movl	%edx, %eax
+	movl	$1, %edx
+	jmp	.LBB1_2
+	.p2align	4, 0x90
+.LBB1_5:                                #   in Loop: Header=BB1_2 Depth=1
+	xorl	%r9d, %r9d
+.LBB1_6:                                #   in Loop: Header=BB1_2 Depth=1
+	movslq	%r9d, %r9
+	movl	%r8d, (%rcx,%r9,4)
+	incq	%rdx
+	cmpq	%rax, %rdx
+	je	.LBB1_7
+.LBB1_2:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB1_3 Depth 2
+	movl	(%rcx,%rdx,4), %r8d
+	movq	%rdx, %r9
+	.p2align	4, 0x90
+.LBB1_3:                                #   Parent Loop BB1_2 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	movl	-4(%rcx,%r9,4), %r10d
+	cmpl	%r8d, %r10d
+	jle	.LBB1_6
+# %bb.4:                                #   in Loop: Header=BB1_3 Depth=2
+	movl	%r10d, (%rcx,%r9,4)
+	decq	%r9
+	leaq	1(%r9), %r10
+	cmpq	$1, %r10
+	jg	.LBB1_3
+	jmp	.LBB1_5
+.LBB1_7:
+	retq
+                                        # -- End function
+	.def	main;
+	.scl	2;
+	.type	32;
+	.endef
+	.globl	main                            # -- Begin function main
+	.p2align	4, 0x90
+main:                                   # @main
+.seh_proc main
+# %bb.0:
+	subq	$24, %rsp
+	.seh_stackalloc 24
+	.seh_endprologue
+	movaps	.L__const.main.arr(%rip), %xmm0
+	movaps	%xmm0, (%rsp)
+	movl	$6, 16(%rsp)
+	movl	$1, %eax
+	jmp	.LBB2_1
+	.p2align	4, 0x90
+.LBB2_4:                                #   in Loop: Header=BB2_1 Depth=1
+	xorl	%edx, %edx
+.LBB2_5:                                #   in Loop: Header=BB2_1 Depth=1
+	movslq	%edx, %rdx
+	movl	%ecx, (%rsp,%rdx,4)
+	incq	%rax
+	cmpq	$5, %rax
+	je	.LBB2_6
+.LBB2_1:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB2_2 Depth 2
+	movl	(%rsp,%rax,4), %ecx
+	movq	%rax, %rdx
+	.p2align	4, 0x90
+.LBB2_2:                                #   Parent Loop BB2_1 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	movl	-4(%rsp,%rdx,4), %r8d
+	cmpl	%ecx, %r8d
+	jle	.LBB2_5
+# %bb.3:                                #   in Loop: Header=BB2_2 Depth=2
+	movl	%r8d, (%rsp,%rdx,4)
+	decq	%rdx
+	leaq	1(%rdx), %r8
+	cmpq	$1, %r8
+	jg	.LBB2_2
+	jmp	.LBB2_4
+.LBB2_6:
+	xorl	%eax, %eax
+	addq	$24, %rsp
+	retq
+	.seh_endproc
+                                        # -- End function
+	.section	.rdata,"dr"
+	.p2align	4, 0x0                          # @__const.main.arr
+.L__const.main.arr:
+	.long	7                               # 0x7
+	.long	4                               # 0x4
+	.long	5                               # 0x5
+	.long	2                               # 0x2
+	.long	6                               # 0x6
 
-.subsections_via_symbols
+	.addrsig
