@@ -23,3 +23,6 @@ atomic_increment:
                                         # - If the value at address X has CHANGED since the LL, the SC fails:
                                         #   -> Leave memory unchanged and set $t1 to 0.
         beqz $t1, atomic_increment      # If SC failed ($t1 = 0), retry the operation.
+```
+
+This code ensures that `shared_var` is incremented atomically, even in a parallel environment with multiple processors. The LL/SC pair retries the operation until it succeeds, guaranteeing synchronization and preventing race conditions.
