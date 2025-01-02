@@ -17,6 +17,32 @@ An instruction is a (binary) command that can executed by computer processor
   
 --------------------------------------------------------------------------------------------------------------------------------------------
 
+## Instruction Set Architecture (ISA)
+
+**Instruction Set Architecture (ISA)** refers to the set of instructions that a processor can understand and execute. It defines the interface between software and hardware, dictating how a CPU communicates with memory and performs tasks.
+
+### Popular ISAs:
+
+1. **x86** **x86-64**
+   - **Developer**: Intel, ADM (64 bit version)
+   - **Use**: Commonly used in **PCs** and **servers**.
+   - **Chips**: Intel Core, AMD Ryzen, etc.
+   - **Description**: A **CISC (Complex Instruction Set Computing)** ISA, supporting a wide range of complex instructions for enhanced functionality.
+
+2. **ARM (ARMv7, ARMv8, ARMv9)**
+   - **Developer**: Arm Holdings (ARM designs the ISA, but other companies create chips based on it).
+   - **Use**: **Mobile devices**, **embedded systems**, and **low-power devices**.
+   - **Chips**: Apple M1, Apple M2, Qualcomm Snapdragon, etc.
+   - **Description**: A **RISC (Reduced Instruction Set Computing)** ISA known for its simplicity, efficiency, and power-saving benefits. ARM processors are highly customizable, making them popular in mobile and embedded markets.
+
+3. **MIPS**
+   - **Developer**: MIPS Computer Systems (now not actively developed anymore).
+   - **Use**: Primarily used in **education** and some **embedded systems**.
+   - **Chips**: MIPS R4000, used in network devices, early gaming consoles.
+   - **Description**: A **RISC** architecture, known for its simplicity, where each instruction typically performs a single operation. It’s often used in educational settings to teach computer architecture concepts.
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Instruction Structure
 
 An instruction typically consists of the following fields:
@@ -25,7 +51,7 @@ An instruction typically consists of the following fields:
   - Source Operands: Data or addresses required for the operation.
   - Destination Operand: Where the result is stored.
 
-Example (in a 32-bit instruction):
+Example (in a 32-bit R-type instruction in MIPS):
 opcode (6 bits) | rs (5 bits) | rt (5 bits) | rd (5 bits) | shamt (5 bits) | funct (6 bits)
 
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,9 +79,6 @@ There are different ways to represent address in instructions (different address
 - Register Addressing: The address is the value stored in a register. Ex: `lw $t0, 0($t1) # Load word from memory address stored in $t1 into $t0`
 - Base or Displacement Addressing: The address is the sum of a register's value and a constant (displacement). Ex: `lw $t0, 4($t1) # Load word from the memory address ($t1 + 4) into $t0`
 - PC-Relative Addressing: The address is calculated by adding a constant to the current program counter (PC). Ex: `beq $t0, $t1, 100 # Branch to (PC + 1 + 100)th word/instruction if $t0 equals $t1`
-- Pseudodirect Addressing: The address is the 26-bit value in the instruction concatenated with the upper bits of the current PC
-
-Note: addresses used in jump & conditional branching instructions are word address (or instruction address) not byte address: this is relative address within the program it self. Ex. `beq $t0, $t1, 100` means branch to the next 100th instruction after the following instruction of this instruction. If the `beq` instruction is the 20th instruction then the instruction to branch to is 121th.
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 

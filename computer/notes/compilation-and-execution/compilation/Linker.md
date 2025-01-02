@@ -1,11 +1,33 @@
+# Linker
 
-# Dynamic Linking Process at Runtime
+The **linker** combines object files to create an executable program. The linking proces:
+- Combine Instructions: merges machine instructions and data from multiple object files into a single binary.
+- Resolve Symbols: Matches and resolves references to symbols (e.g., functions, variables) across object files.
+- Relocate Addresses: Adjusts symbol addresses and offsets to map correctly into the program's **virtual address space** (This virtual address space is where the operating system loads the program during execution).
+
+## Types of Linking
+
+### 1. Static Linking
+
+In static linking, all the code and data from external libraries are included directly in the executable at compile time.
+
+### 2. Dynamic Linking
+
+In dynamic linking, external libraries are not included in the executable. References to functions or variables in shared libraries are resolved at runtime when the program is executed.
+
+Early implementations of dynamic libraries would load the entire library into memory and resolve all symbols at startup. This was inefficient because:
+  - Large libraries with many unused functions would waste memory.
+  - Startup times were significantly longer.
+
+Lazy binding solves these issues by only load the needed functions/routines when required.
+
+#### Lazy binding processing
 
 When a program is running and a call to a routine in a dynamic library occurs, the process is as follows:
 
 1. **Initial Jump to a Stub (PLT Stub):**
    - The program does **not** directly jump to the actual code of the dynamic library routine because the library has not been loaded into memory yet.
-   - Instead, the jump instruction (`X`) initially points to a *stub* or *dummy entry point* (typically in the **Procedure Linkage Table (PLT)**).
+   - Instead, the jump instruction points to a *stub* or *dummy entry point* (typically in the **Procedure Linkage Table (PLT)**).
    - This stub contains code to handle the dynamic routine call indirectly.
 
 2. **Stub Prepares the Call:**
@@ -25,7 +47,7 @@ When a program is running and a call to a routine in a dynamic library occurs, t
    - This ensures that subsequent calls bypass the stub and jump directly to the function.
 
 5. **Subsequent Calls:**
-   - Once the relocation is done, the jump instruction `X` points directly to the resolved function in memory.
+   - Once the relocation is done, the actual address of needed dynamic routine is updated in PLT.
    - This means that **indirect jumps only happen once**, during the first call.
 
 6. **Benefits of Lazy Binding:**
@@ -39,15 +61,4 @@ When a program is running and a call to a routine in a dynamic library occurs, t
 - Early implementations of dynamic libraries would load the entire library into memory and resolve all symbols at startup. This was inefficient because:
   - Large libraries with many unused functions would waste memory.
   - Startup times were significantly longer.
-- Lazy binding solves these issues by resolving and loading functions on demand.
-
-## Additional Notes
-
-- Some systems allow **eager binding**, where all symbols are resolved at startup. This can be enabled (e.g., by setting `LD_BIND_NOW=1` on Linux).
-- The dynamic linker/loader typically modifies the **PLT** (Procedure Linkage Table) and **GOT** (Global Offset Table) to perform relocation.
-- Relocation ensures that calls bypass the stub after the first resolution.
-
-## Summary
-
-- **Indirect jumps only occur during the first call** to a dynamic library routine.
-- Lazy binding improves performance by reducing memory usage and startup time, compared to early DLL implementations that loaded entire libraries upfront.
+- 

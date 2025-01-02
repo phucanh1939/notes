@@ -1,7 +1,7 @@
 
-# Functions/Procetures
+# Function / Proceture
 
-Functions or procedures are higher-level constructs in programming that encapsulate reusable code.
+Function or procedure are higher-level construct/concept in programming that encapsulate reusable code.
 
 At their core, they are a set of instructions with a specific address or label in memory.
 These instructions are loaded into memory when the program starts running and can be invoked using a jump instruction to their address.

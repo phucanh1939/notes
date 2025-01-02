@@ -1,6 +1,8 @@
 # Code to Execution (JavaScript)
 
-There is no compiling to an platform-independent bytecode/IL instructions like java or C#. Javascript itself is an platform-independent instructions.
+## Compilation process
+
+There is no compilation process. Javascript is translated to bytecode by the JS Engine when it load the js code into memory.
 
 ## Runing process
 
