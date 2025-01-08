@@ -144,7 +144,10 @@ LBB1_8:
 	ret
 	.loh AdrpLdr	Lloh2, Lloh3
 	.cfi_endproc
-                                        ; -- End function
+
+###################################################
+# function: int factorial_with_tail_call(int n)
+###################################################
 	.section	__TEXT,__literal16,16byte_literals
 	.p2align	4                               ; -- Begin function factorial_no_tail_call
 lCPI2_0:
@@ -156,13 +159,9 @@ lCPI2_0:
 	.globl	_factorial_no_tail_call
 	.p2align	2
 _factorial_no_tail_call:                ; @factorial_no_tail_call
-	.cfi_startproc
-; %bb.0:
 	cbz	w0, LBB2_3
-; %bb.1:
 	cmp	w0, #16
 	b.hs	LBB2_4
-; %bb.2:
 	mov	w8, #1
 	mov	x9, x0
 	b	LBB2_7
