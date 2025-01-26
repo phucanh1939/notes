@@ -173,3 +173,19 @@ Example:
 (+7) / (-2) = (-3) (remain +1)
 (-7) / (+2) = (-3) (remain -1)
 (-7) / (-2) = (+3) (remain -1)
+
+## Overlow
+
+Overflow can occur in division, but it is rare compared to multiplication. Here's when it happens:
+
+### In Signed Division
+32 bit signed integer have range from -2^32 to 2^32 -1.
+Therefor if we do the division: -2^32 / (-1) = 2^32 => the overlow will happen
+
+### In Unsigned Division
+Overflow does not occur in unsigned division because:
+The result of dividing an n-bit unsigned number by another n-bit unsigned number always fits within n bits.
+
+## Division in Different Hardware
+
+The same registers used for multiplication are also used for division
