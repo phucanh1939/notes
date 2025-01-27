@@ -1,18 +1,11 @@
-# Data
 
-To use computer to process different type of data, we need to represent it in way computer can read and "understand" - binary format.
-
-## Boolean
-
-Boolean is binary itself so nothing to do
-
-## Number
+# Number
 
 To represent numbers in different bases (including binary), the concept of `positional numeral systems` is used
 
 Example: The binary number `1011` is: `1x2^3 + 0x2^2 + 1x2^1 + 1x2^0 = 11 (in base 10 - Decimal)`
 
-### Integer
+## Integer
 
 `Unsigned` integers are represented in binary form using **positional notation**, where each bit (binary digit) represents a power of 2. For example: 101 = 1x2^2 + 0x2^1 + 1x2^0 = 5 (decimal)
 
@@ -36,7 +29,7 @@ For example, in an 8-bit system:
 - Add 1 → `1111 1011` (-5)
 `1111 1011` = -1x2^7 + 1x2^6 + 1x2^5 + 1x2^4 + 1x2^3 + 0x2^2 + 1x2^1 + 1x2^0 = -5
 
-### Floating Point
+## Floating Point
 
 Floating-point numbers (e.g., 3.14) are represented using the **IEEE 754 standard**, which divides the binary representation into three parts:
 1. **Sign bit**: 1 for negative, 0 for positive.
@@ -51,7 +44,7 @@ Floating-point numbers (e.g., 3.14) are represented using the **IEEE 754 standar
 | **Bias**           | 127                           | 1023                          |
 | **Total Size**     | 32 bits                       | 64 bits                       |
 
-#### Example: Representing ` -6.75 ` in IEEE 754 (32-bit Single Precision)
+### Example: Representing ` -6.75 ` in IEEE 754 (32-bit Single Precision)
 
 **Step 1**: Convert ` -6.75 ` to binary:  
 - The integer part `6` is `110` in binary.  
@@ -74,7 +67,7 @@ Thus, `6.75` is `110.11` in binary.
 
 **Final IEEE 754 Representation**:  `1 10000001 10110000000000000000000` (32 bits)
 
-#### Example: Representing `10.3562` in IEEE 754 (32-bit Single Precision)
+### Example: Representing `10.3562` in IEEE 754 (32-bit Single Precision)
 
 1. Step 1: Convert the integer part (10) to binary
 
@@ -115,9 +108,3 @@ To convert back to decimal value:
   - mantissa: `01001011001100110011001` = 0/2^1 + 1/2^2 + 0/2^3 +... ≈ 0.28125
 - Compute the decimal value using the formula: `(-1)^sign * (1 + mantissa) * 2^(exponent - 127)`
   value = -1 ^ 0 * (1 + 0.28125) * 2 ^ (130-127) = 10.25
-
-## String
-
-String is an array of characters.
-Each character is represented with a code (integer) using standard encodings (ASCII, UTF8, UTF16, UTF32, etc.).
-=> String = array_of_character_code (array of integers)
