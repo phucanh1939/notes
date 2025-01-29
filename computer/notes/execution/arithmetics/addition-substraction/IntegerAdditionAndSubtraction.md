@@ -1,7 +1,5 @@
 # Addition and Substraction
 
-## Overview
-
 `Addition`: digits are added bit by bit from right to left, with carries passed to the next digit to the left, just as you would do by hand
 
 `Subtraction` uses addition: the appropriate operand is simply negated before being added

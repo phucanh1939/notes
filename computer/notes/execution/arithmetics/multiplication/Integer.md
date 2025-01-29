@@ -1,4 +1,4 @@
-# Multiplication
+# Integer Multiplication
 
 ## Terms
 
@@ -80,20 +80,25 @@ for (i = 0; i < 32; i++) {
 ```cpp
 // Init
 // - multicand into 32 bits Multicand register
-// - multiplier into lower 32 bits of 64 bits Product/Multiplier register
-// - product init as 0 into upper 32 bits  of 64 bits Product/Multiplier register
+// - multiplier into lower 32 bits of 64 bits Product register
+// - product init as 0 into upper 32 bits  of 64 bits Product register
 //
 // Result
-// - After the multiplication, lower 32bit of Product/Multiplier register is the result
+// - After the multiplication, lower 32 bits of Product register is the result
 for (i = 0; i < 32; i++) {
     // if most right bit of multiplier is 0
-    if (product_multiplier[0] != 0) {
+    if (product[0] != 0) {
         // Add product with multiplicand
-        product = product + multiplicand;
+        product_upper = product_upper + multiplicand;
     }
-    product_multiplier = product_multiplier >> 1;
+    product = product >> 1;
 }
 ```
+
+To multiply n-bits integer:
+- We perform n additions
+- Each addition operates on n bits
+=> Time complexity for multiplication is: O(n^2)
 
 ### Example
 
@@ -119,7 +124,7 @@ Simple approach:
 - Do the multiplication
 - Sign of the result is negative only if Multiplicand and Multiplier has different sign
 
-The above algorithm also work for signed integer!!
+The above algorithm also work for signed integer (represented in two complements) !!
 
 Example:
 1101 (-3) x 0010 (2) = 1010 (-6)

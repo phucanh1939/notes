@@ -124,15 +124,15 @@ For 32-bits unsigned integers division:
 // init
 // - quotient = 0
 // - divisor set to 32-bits register (will not changing during the execution )
-// - dividend is set to most left 32-bits of 64-bits remainder/dividend/quotient register
+// - dividend is set upper 32-bits of 64 bit register
 
-for (i = 0; i < 32; i++) {
+for (i = 0; i <= 32; i++) {
     dividend_upper = dividend_upper - divisor;
     if (dividend_upper >= 0) {
         dividend = (dividend << 1) | 1;
     } else {
         dividend_upper = dividend_upper + divisor;
-        dividend = (dividend << 1) | 0;
+        dividend = dividend << 1;
     }
 }
 // The last loop we not shift left the remainder
@@ -156,9 +156,12 @@ Let’s try dividing `7ten` by `2ten`, or `0111` by `0010`
 | 1         | 0010        | 0000 1110   |
 | 2         | 0010        | 0001 1100   |
 | 3         | 0010        | 0011 1000   |
-|           | 0010        | 0001 1001   |
-| 4         | 0010        | 0011 0001   |
-|           | 0010        | 0001 0011   |
+| 4         | 0010        | 0001 1000   |
+|           | 0010        | 0011 0001   |
+| 5         | 0010        | 0001 0001   |
+|           | 0010        | 0010 0011   |
+| final     | 0010        | 0001 0011   |
+
 
 => Quotient = 0011 = 3 (ten) and Remainder = 0001 = 1 (ten)
 
