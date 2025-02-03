@@ -16,7 +16,7 @@ For a computer to process **[data]**, the following steps are involved:
 4. **Output Data**: The processed data is written back into **[memory]**.
 5. **Output Presentation**: The output data can be written into **[storage]** (as **[files]**) or read by an **[output device][outdevice]** (e.g., monitor, printer) to present it to the user.
 
-![How a Computer Processes Data](../flowcharts/HowComputerProcessData.drawio.png)
+![How a Computer Processes Data](../assets/flowcharts/HowComputerProcessData.drawio.png)
 
 ### Basic Components of a Computer
 - **[Input Device][indevice]**: Used to provide input data to the computer (e.g., keyboard, mouse, microphone).
@@ -49,27 +49,27 @@ A computer program to extract all sentences in a text document that contain a ke
 5. **[Integrated Circuits (ICs)][ic]**: Core components are fabricated into microchips.
 6. **[Motherboard]**: ICs, storage (HDD/SSD), cooling systems, and I/O ports are assembled onto a **motherboard**.
 
-[data]:                 data/Data.md
-[string]:               data/text/Text.md
-[program]:              program/Program.md
-[instruction]:          program/instruction/Instruction.md
-[storage]:              components/storage/Storage.md
-[memory]:               components/memory/Memory.md
-[ram]:                  components/memory/ram/RAM.md
-[indevice]:             components/input-devices/InputDevice.md
-[outdevice]:            components/output-devices/OutputDevice.md
-[processor]:            components/processor/Processor.md
-[logic-gate]:           components/processor/functional-units/logic-gate/LogicGate.md
-[circuit-block]:        components/processor/functional-units/circuit-block/CircuitBlock.md
-[gpu]:                  components/gpu/GPU.md
-[psu]:                  components/psu/PSU.md
-[nic]:                  components/network/NIC.md
-[cooling-system]:       components/cooling-system/CoolingSystem.md
-[file]:                 operating-system/file-system/File.md
-[ic]:                   terms/IntegratedCircuit.md
-[transistor]:           components/processor/functional-units/transistor/Transistor.md
-[motherboard]:          components/motherboard/Motherboard.md
-[decoder]:              components/processor/functional-units/decoder/Decoder.md
-[multiplexer]:          components/processor/components/multiplexer/Multiplexer.md
-[ALU]:                  components/processor/components/alu/ALU.md
-[register]:             components/processor/components/register/Register.md
+[data]:                 data/Data
+[string]:               data/text/Text
+[program]:              program/Program
+[instruction]:          program/instruction/Instruction
+[storage]:              components/storage/Storage
+[memory]:               components/memory/Memory
+[ram]:                  components/memory/ram/RAM
+[indevice]:             components/input-devices/InputDevice
+[outdevice]:            components/output-devices/OutputDevice
+[processor]:            components/processor/Processor
+[logic-gate]:           components/processor/functional-units/logic-gate/LogicGate
+[circuit-block]:        components/processor/functional-units/circuit-block/CircuitBlock
+[gpu]:                  components/gpu/GPU
+[psu]:                  components/psu/PSU
+[nic]:                  components/network/NIC
+[cooling-system]:       components/cooling-system/CoolingSystem
+[file]:                 operating-system/file-system/File
+[ic]:                   terms/IntegratedCircuit
+[transistor]:           components/processor/functional-units/transistor/Transistor
+[motherboard]:          components/motherboard/Motherboard
+[decoder]:              components/processor/functional-units/decoder/Decoder
+[multiplexer]:          components/processor/components/multiplexer/Multiplexer
+[ALU]:                  components/processor/components/alu/ALU
+[register]:             components/processor/components/register/Register
