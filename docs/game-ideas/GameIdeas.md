@@ -13,3 +13,6 @@
 ## ShPuzzle Bobble
 
 ## Tiny guardians clone
+
+## Sliding Match3
+Slide row/column to form a match 3 tiles

@@ -4,6 +4,14 @@
 A computer is a programmable electronic device designed to process **[data]** and perform tasks by executing **[programs][program]**.
 It can handle a wide range of operations, from simple calculations to complex **[data]** analysis, based on the instructions provided.
 
+**Types of Computers**:
+- Personal Computers (PCs)
+- Servers
+- Supercomputers
+- Embedded Computers
+- Personal mobile devices (PMDs)
+- Cloud
+
 ## How a Computer Processes Data
 For a computer to process **[data]**, the following steps are involved:
 1. **Define the Data to Process**: Represent the **[data]** in a binary format that the computer can understand.
@@ -48,6 +56,42 @@ A computer program to extract all sentences in a text document that contain a ke
 4. **[Circuit Blocks][circuit-block]**: Form **core components** such as **[CPU][processor], [RAM][ram], [GPU], and [controllers]**.
 5. **[Integrated Circuits (ICs)][ic]**: Core components are fabricated into microchips.
 6. **[Motherboard]**: ICs, storage (HDD/SSD), cooling systems, and I/O ports are assembled onto a **motherboard**.
+
+### Performance of a Computer
+
+Performance is how efficiently it can execute tasks, often measured by how quickly it can complete a given workload.
+The most important metric is **CPU execution time**.
+
+**CPU execution time** is the time the CPU spends computing for a specific task
+
+```c
+// CPU_EXECUTION_TIME: CPU execution time for a program
+// NUMBER_OF_CLOCK_CYCLE: total number of clock cycles of this program
+// CLOCK_CYCLE_TIME: Time of a clock cycle of the CPU
+CPU_EXECUTION_TIME = NUMBER_OF_CLOCK_CYCLES * CLOCK_CYCLE_TIME;
+
+// NUMBER_OF_INSTRUCTION: total number of instructions of this program
+// CPI: Average number of clock cycles per instruction (each type of instruction has different clock cycles needed to execute)
+NUMBER_OF_CLOCK_CYCLES = NUMBER_OF_INSTRUCTION * CPI;
+```
+
+### Computer History
+
+- Before 1800s: Mechanical Calculators
+- 1800s - Early 1900s: Mechanical Computers
+- 1930s - 1940s: Early Electronic Computers (with vacuum tubes)
+- 1947: Transistors
+- 1958: Integrated Circuits
+- 1970s - 1980s: Personal Computers
+- 1990s: The Internet
+- 2000s - Present: Mobile computers, Cloud, AI
+
+As processors become faster and more powerful, they consume significantly more energy.
+Traditionally, higher clock speeds (smaller time to execute task) and smaller transistors (more transistors = more computational units) helped improve performance, but they also led to increased power usage and heat dissipation issues.
+
+=> The shift to multiprocessors has become more prevalent.
+
+Multi-core processors enhance performance while maintaining energy efficiency. To fully utilize multiple processors, programs must be designed for parallel execution. However, this introduces challenges such as synchronization, data sharing, and workload distribution.
 
 [data]:                 data/Data
 [string]:               data/text/Text
