@@ -24,7 +24,7 @@ x   0010 (2)
 - 64-bits Product register
 - 64-bits ALU
 
-![Multiplication Basic Hareware](imgs/MultiplicationBasicHarware.png)
+![Multiplication Basic Hareware](imgs/MultiplicationBasicHardware.png)
 
 ### Algorithm
 
@@ -47,7 +47,7 @@ for (i = 0; i < 32; i++) {
 }
 ```
 
-![Multiplication Basic Algorithm](imgs/MultiplicationBasicAlgorithm.png)
+<!-- ![Multiplication Basic Algorithm](imgs/MultiplicationBasicAlgorithm.png) -->
 
 ### Example
 
@@ -73,7 +73,7 @@ for (i = 0; i < 32; i++) {
 - 64 bits Product/Multiplier register
 - 32 bits ALU
 
-![Multiplication Improved Algorithm](imgs/MultiplicationImprovedAlgorithm.png)
+![Multiplication Improved Algorithm](imgs/MultiplicationImprovedHardware.png)
 
 ### Algorithm
 

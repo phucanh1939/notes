@@ -1,4 +1,11 @@
-# Floating Point
+# Floating-point Number
+
+Floating-point numbers are approximately representation of **[real number][real-numbers]**.
+
+Why *approximately*: 
+- Computer used a limited bits to represent a number, but **[real number][real-numbers]** can have infinity digits
+
+## How to Represent Floating-point Number in Binary
 
 Floating-point numbers (e.g., 3.14) are represented using the **IEEE 754 standard**, which divides the binary representation into three parts:
 1. **Sign bit**: 1 for negative, 0 for positive.
@@ -16,8 +23,7 @@ Floating-point numbers (e.g., 3.14) are represented using the **IEEE 754 standar
 
 With `k` is the number of exponent bits: `Bias` = 2^(k-1) - 1
 
-## Special Values
-## Special Values
+### Special Values
 
 | Value     | Binary Representation              | Explanation                                                            |
 |-----------|------------------------------------|------------------------------------------------------------------------|
@@ -27,7 +33,7 @@ With `k` is the number of exponent bits: `Bias` = 2^(k-1) - 1
 | -infinity | `11111111100000000000000000000000` | **Sign bit** = 1, **exponent** = all 1s, **mantissa** = 0.             |
 | NaN       | `01111111100000000000000000000001` | **Sign bit** can be 0 or 1, **exponent** = all 1s, **mantissa** != 0.  |
 
-## Convert floating point to binary
+### Convert from Decimal to Binary
 
 1. Get the `sign` bit
 2. Convert integer part and fractional part to binary
@@ -35,7 +41,7 @@ With `k` is the number of exponent bits: `Bias` = 2^(k-1) - 1
 4. Bias the `exponent` found in step #3
 5. Form the binay: `sign|fraction|exponent`
 
-### Example: Representing ` -6.75 ` in IEEE 754 (32-bit Single Precision)
+#### Example 1: Representing ` -6.75 ` in IEEE 754 (32-bit Single Precision)
 
 1. Sign bit: 1 (negative)
 
@@ -55,7 +61,7 @@ Thus, `6.75` is `110.11` in binary.
 
 5. Assemble the parts: `1 10000001 10110000000000000000000` (32 bits)
 
-### Example: Representing `10.3562` in IEEE 754 (32-bit Single Precision)
+#### Example 2: Representing `10.3562` in IEEE 754 (32-bit Single Precision)
 
 1. Sign bit: 0
 
@@ -82,13 +88,11 @@ exponent = 3 + 127 = 130 = 1000001
 5. Form the binary
 `10.3562`= `0 10000010 01001011001100110011001`
 
------
-
-## Convert binary to floating point
+### Convert from Binary to Decimal
 1. Extract `sign`, `exponent`, and `fraction` from the binary
 2. Compute the decimal value using the formula: `(-1)^sign * (1 + fraction) * 2^(exponent - bias)`
 
-### Example conver `0 10000010 01001011001100110011001` to floating point
+#### Example conver `0 10000010 01001011001100110011001` to floating point
 
 1. Extract the sign, exponent, and mantissa.
   - sign = 0
@@ -97,4 +101,22 @@ exponent = 3 + 127 = 130 = 1000001
 
 2. Compute the decimal value using the formula: `(-1)^sign * (1 + mantissa) * 2^(exponent - bias)`
   value = -1 ^ 0 * (1 + 0.28125) * 2 ^ (130-127) = 10.25
+
+## Floating-point History
+
+Before computers, approximations of real numbers is needed because: In general, many real-world quantities (like lengths, areas, or volumes) have infinite precision make it impossible to calculate.
+
+## 1. Early Beginnings  
+- **Ancient Civilizations**: Early estimates of real-world values (like astronomical data) used approximations but lacked precise representation of decimals.
+
+## 2. 17th Century  
+- **Napier's Logs (1614)**: John Napier introduced **logarithms**, which helped with multiplication and division by converting them to addition and subtraction.
+
+## 3. 19th Century  
+- **Charles Babbage**: The **Analytical Engine** (1837) was designed to use floating-point arithmetic for calculations, though it was never fully built.
+
+## 4. 20th Century  
+- **IEEE Standardization (1985)**: The **IEEE 754 standard** was introduced to provide a standardized format for floating-point representation, ensuring consistency across computers.
+- **Early Computing**: In the 1940s, computers like the **ENIAC** used floating-point arithmetic for scientific and engineering calculations.
   
+[real-numbers]: Number

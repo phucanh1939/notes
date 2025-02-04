@@ -53,7 +53,7 @@ For 32-bits unsigned integers division:
 - 64 ALU
 - 32 bits quotient register
 
-![Division Basic Hareware](imgs/DivisionBasicHarware.png)
+![Division Basic Hareware](imgs/DivisionBasicHardware.png)
 
 ### Algorithm
 
@@ -116,7 +116,7 @@ For 32-bits unsigned integers division:
 - 64-bits remainder/dividend and quotient register
 - 32-bits ALU
 
-![Division Improved Hareware](imgs/DivisionBasicHarware.png)
+![Division Improved Hareware](imgs/DivisionImprovedHardware.png)
 
 ### Algorithm
 
@@ -183,7 +183,7 @@ Overflow can occur in division, but it is rare compared to multiplication. Here'
 
 ### In Signed Division
 32 bit signed integer have range from -2^32 to 2^32 -1.
-Therefor if we do the division: -2^32 / (-1) = 2^32 => the overlow will happen
+Therefor if we do the division: -2^32 / (-1) = 2^32 => the overflow will happen
 
 ### In Unsigned Division
 Overflow does not occur in unsigned division because:

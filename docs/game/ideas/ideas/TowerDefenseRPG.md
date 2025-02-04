@@ -5,9 +5,9 @@
 - [x] **Challenges** – Waves of enemies, different enemy types, and resource management.
 - [x] **Player Actions** – Summon and upgrade different guardian units, position them strategically, and use special abilities.
 - [x] **Core Gameplay Loop**
-        Play -> Reward (item, currency, card) -> Upgrade/unlock card -> Play
+      Play -> Reward (item, currency, card) -> Upgrade/unlock card -> Play
 
-- [x] **MVP (Minimal Viable Product)** – 
+- [x] **MVP (Minimal Viable Product)**
   - Basic summoning and combat system
   - A few enemy types: melee and range
   - Simple progression with a few levels
