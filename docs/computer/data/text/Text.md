@@ -35,4 +35,4 @@ Then "Hi" will be `01001000 01101001`
 - Typewriters & Mechanical Writing (1800s–1900s) – Allowed efficient text creation and documentation.
 - Digital Text (1950s–Present) – Computers began storing text using ASCII, Unicode (UTF-8, UTF-16, etc.), enabling global digital communication.
 - AI & Text Processing (21st Century) – Natural language processing (NLP) enables text analysis, translation, and AI-generated writing.
-- 
+  
