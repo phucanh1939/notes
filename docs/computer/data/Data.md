@@ -15,5 +15,5 @@ For computer to "understand" the data, it need to be represented in binary forma
 [floating-point]: number/FloatingPoint
 [text]: text/Text
 [image]: image/Image
-[audio]: sound/Sound
+[audio]: audio/Audio
 [video]: video/Video
