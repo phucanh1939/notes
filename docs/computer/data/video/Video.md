@@ -33,23 +33,23 @@ A video is represented in a computer as a sequence of frames (images) displayed 
 
 ### History of Video  
 
-1. **Early Motion Capture (Pre-1900s)**  
-   - **1878**: **Eadweard Muybridge** captured motion using sequential photographs ("The Horse in Motion").  
-   - **1895**: **Lumière Brothers** created the first public film screening using the **Cinématographe**.  
+### Early Motion Capture (Pre-1900s)
+- **1878: **Eadweard Muybridge** captured motion using sequential photographs ("The Horse in Motion").  
+- **1895**: **Lumière Brothers** created the first public film screening using the **Cinématographe**.  
 
-2. **Film Era (1900s–1950s)**  
-   - **Silent Films** (early 1900s) → **Sound Films** (**1927**, "The Jazz Singer").  
-   - **Black & White → Color**: **Technicolor (1930s)** revolutionized colored movies.  
+### Film Era (1900s–1950s)
+- **Silent Films** (early 1900s) → **Sound Films** (**1927**, "The Jazz Singer").  
+- **Black & White → Color**: **Technicolor (1930s)** revolutionized colored movies.  
 
-3. **Television & Analog Video (1950s–1990s)**  
-   - **1950s**: TV broadcasting became widespread.  
-   - **1970s–80s**: VHS & Betamax introduced home video recording.  
-   - **1990s**: Transition from analog (VHS) to **digital formats (DVDs, MiniDV)**.  
+### Television & Analog Video (1950s–1990s)
+- **1950s**: TV broadcasting became widespread.  
+- **1970s–80s**: VHS & Betamax introduced home video recording.  
+- **1990s**: Transition from analog (VHS) to **digital formats (DVDs, MiniDV)**.  
 
-4. **Digital Revolution (2000s–Present)**  
-   - **2000s**: Rise of **digital video formats (MP4, AVI, MKV)**.  
-   - **2010s**: Streaming services (**YouTube, Netflix**) dominate content consumption.  
-   - **2020s**: AI-generated videos, **8K resolution**, and immersive experiences (**VR, AR**).  
+### Digital Revolution (2000s–Present)
+- **2000s**: Rise of **digital video formats (MP4, AVI, MKV)**.  
+- **2010s**: Streaming services (**YouTube, Netflix**) dominate content consumption.  
+- **2020s**: AI-generated videos, **8K resolution**, and immersive experiences (**VR, AR**).  
 
 
 [audio]: ../audio/Audio

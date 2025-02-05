@@ -1,4 +1,4 @@
-# Floating-point Number
+# Floating Point
 
 Floating-point numbers are approximately representation of **[real number][real-numbers]**.
 

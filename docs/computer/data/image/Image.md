@@ -119,36 +119,36 @@ $ xxd assets/White_10x10.png
 
 ## History of Images
 
-1. Early Beginnings (Pre-19th Century)  
-   - Cave Paintings: Earliest visual representations (~30,000 years ago).  
-   - Ancient Art: Ancient Egyptians, Greeks, and Romans depicted gods and historical events.
+### Early Beginnings (Pre-19th Century)  
+- Cave Paintings: Earliest visual representations (~30,000 years ago).  
+- Ancient Art: Ancient Egyptians, Greeks, and Romans depicted gods and historical events.
 
-2. Invention of Photography (19th Century)  
-   - 1826: Joseph Nicéphore Niépce captured the first permanent photograph ("View from the Window at Le Gras").  
-   - 1839: Louis Daguerre developed the daguerreotype, the first commercially successful photographic process.  
-   - 1850s: Albumen prints and wet collodion process improved photographic clarity.  
-   - 1871: Richard Leach Maddox introduced the dry plate process, making photography portable.
+### Invention of Photography (19th Century)  
+- 1826: Joseph Nicéphore Niépce captured the first permanent photograph ("View from the Window at Le Gras").  
+- 1839: Louis Daguerre developed the daguerreotype, the first commercially successful photographic process.  
+- 1850s: Albumen prints and wet collodion process improved photographic clarity.  
+- 1871: Richard Leach Maddox introduced the dry plate process, making photography portable.
 
-3. Color Photography and Film (20th Century)  
-   - 1907: Autochrome plate introduced the first commercial color photography process.  
-   - 1935: Kodachrome film became popular for vibrant color photographs.
+### Color Photography and Film (20th Century)  
+- 1907: Autochrome plate introduced the first commercial color photography process.  
+- 1935: Kodachrome film became popular for vibrant color photographs.
 
-4. Modern Era (Digital Age - 21st Century)  
-   - Digital Photography (1990s–Present): Transition from film-based to digital photography with digital sensors (CCD, CMOS).  
-   - 2000s: Rise of smartphone cameras, making photography ubiquitous.  
-   - High-resolution sensors (e.g., 4K, 8K, and beyond) for sharper images.
+### Modern Era (Digital Age - 21st Century)  
+- Digital Photography (1990s–Present): Transition from film-based to digital photography with digital sensors (CCD, CMOS).  
+- 2000s: Rise of smartphone cameras, making photography ubiquitous.  
+- High-resolution sensors (e.g., 4K, 8K, and beyond) for sharper images.
 
-5. Image Editing and Software (1990s–Present)  
-   - Software like Adobe Photoshop revolutionized image editing and manipulation.  
-   - AI and Machine Learning now power many tools for automatic enhancement, deepfakes, and style transfers.
+### Image Editing and Software (1990s–Present)  
+- Software like Adobe Photoshop revolutionized image editing and manipulation.  
+- AI and Machine Learning now power many tools for automatic enhancement, deepfakes, and style transfers.
 
-6. 3D Imaging and Rendering (2000s–Present)  
-   - Advancements in 3D rendering technology for film, gaming, and virtual reality (VR).  
-   - Augmented Reality (AR) and Mixed Reality (MR) are increasingly using image data for immersive experiences.
+### 3D Imaging and Rendering (2000s–Present)  
+- Advancements in 3D rendering technology for film, gaming, and virtual reality (VR).  
+- Augmented Reality (AR) and Mixed Reality (MR) are increasingly using image data for immersive experiences.
 
-7. High Dynamic Range (HDR) and 3D Imaging  
-   - HDR imaging has become common in photography and cinema, providing better contrast and color range.  
-   - 3D scanning and printing continue to grow in popularity for entertainment, engineering, and manufacturing.
+### High Dynamic Range (HDR) and 3D Imaging  
+- HDR imaging has become common in photography and cinema, providing better contrast and color range.  
+- 3D scanning and printing continue to grow in popularity for entertainment, engineering, and manufacturing.
 
 [floating-point]: ../number/FloatingPoint
 [numbers]: ../number/Number
