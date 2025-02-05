@@ -8,7 +8,7 @@ Example: This document is written using sequence of symbols to convey an informa
 
 ## How to Represent Text in Binary
 
-**Text** is represented as sequence of **[integers]**, each character is assigned a unique code follow an encoding scheme.
+**Text** is represented as `string` in computer sequence of **[integers]**, each character is assigned a unique code follow an encoding scheme.
 
 Common encoding schemes include:
 - ASCII (7-bit, 128 characters)
@@ -36,3 +36,5 @@ Then "Hi" will be `01001000 01101001`
 - Digital Text (1950s–Present) – Computers began storing text using ASCII, Unicode (UTF-8, UTF-16, etc.), enabling global digital communication.
 - AI & Text Processing (21st Century) – Natural language processing (NLP) enables text analysis, translation, and AI-generated writing.
   
+## Relation Between Text and String
+Text is the concept, and a string is its digital representation in programming.
