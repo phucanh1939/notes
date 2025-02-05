@@ -2,18 +2,16 @@
 
 **Data** refers to raw facts, figures, or information that can be processed or analyzed. 
 
-- **[Number]**: [Integer] and [Floating-point] numbers
-- **[Text]**: Words, sentences, or paragraphs (e.g., "Hello", "Data is power").  
-- **[Image]**: Pictures or visual data (e.g., JPEG, PNG files).  
-- **[Audio]**: Sounds or music (e.g., MP3, WAV files).  
-- **[Video]**: Moving visual data (e.g., MP4, AVI files). 
+- **[Number]**: Mathematical symbolic representation of a value - used to **count, measure, and label**
+- **[Text]**: Sequence of symbols, words, characters
+- **[Image]**: Visual representation of light's properties - how light interact with objects
+- **[Audio]**: Representation of sound's properties (amplitude, frequency)
+- **[Video]**: Sequence of **[images][image]** (frames) displayed rapidly to create the illusion of motion
 
 For computer to "understand" the data, it need to be represented in binary format.
 
-[number]: number/Integer
-[integer]: number/Integer
-[floating-point]: number/FloatingPoint
+[number]: number/Number
 [text]: text/Text
 [image]: image/Image
-[audio]: audio/Audio
+[audio]: sound/Sound
 [video]: video/Video

@@ -2,17 +2,13 @@
 
 ## What is an Image
 
-An **image** is a visual representation of an object, scene, or concept, captured or created through physical or digital means.
-
-Unlike human vision, which is dynamic, adaptive, and deeply interpretative, an **image** is a static or recorded depiction that lacks real-time perception, depth awareness, and contextual understanding.
-
-**Images** can be captured, created, or stored using various methods, such as photography, painting, or digital rendering.
+An image is a visual representation of light properties (color, brightness, contrast) that captures how light interacts with objects in a scene at a specific moment. It can also be created or manipulated through artistic, digital, or photographic processes to represent a scene, idea, or concept.
 
 **Images** can be **analog** (paintings, photographs) or **digital** (bitmap, vector graphics)
 
-## Types of Digital Images
+**A digital image** is a representation of an image using discrete numerical values, typically stored as a grid of pixels. Each pixel represents a sample of the scene or object being depicted, and its numerical value encodes properties such as brightness and color.
 
-### **Types of Digital Images**  
+## Types of Digital Images
 
 | **Type** | **Definition** | **Representation in Binary** | **Best For** | **Formats** |
 |------------|-------------|--------------------|------------|------------|
