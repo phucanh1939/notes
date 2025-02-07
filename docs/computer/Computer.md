@@ -24,7 +24,7 @@ For a computer to process **[data]**, the following steps are involved:
 4. **Output Data**: The processed data is written back into **[memory]**.
 5. **Output Presentation**: The output data can be written into **[storage]** (as **[files]**) or read by an **[output device][outdevice]** (e.g., monitor, printer) to present it to the user.
 
-![How a Computer Processes Data](../assets/flowcharts/HowComputerProcessData.drawio.png)
+![How a Computer Processes Data](Assets/Flowcharts/HowComputerProcessData.drawio.png)
 
 ### Basic Components of a Computer
 - **[Input Device][indevice]**: Used to provide input data to the computer (e.g., keyboard, mouse, microphone).
@@ -78,15 +78,22 @@ NUMBER_OF_CLOCK_CYCLES = NUMBER_OF_INSTRUCTION * CPI;
 `NUMBER_OF_INSTRUCTION` is affected by the code, [ISA] and [compiler]
 `CPI` and `CLOCK_CYCLE_TIME` is affected by the implementation of the hardware (processor)
 
+### Subjects about Computer
+
+- **[Computer Architecture]**: Studies how computer components are structured and work together to process data.
+- **[Operating System]**:  Studies how software manages hardware resources and provides system
+- **[Computer Network]**: Studies how computers communicate and share data over networks.
+- **[Computer Graphics]**: Studies how images, animations, and visual content are generated and displayed on screens.
+
 ### Computer History
 
 - Before 1800s: Mechanical Calculators
 - 1800s - Early 1900s: Mechanical Computers
 - 1930s - 1940s: Early Electronic Computers (with vacuum tubes)
 - 1947: [Transistor]
-- 1958: [Integrated Circuit][IC]
+- 1958: Integrated Circuit
 - 1970s - 1980s: Personal Computers
-- 1990s: [The Internet][Internet]
+- 1990s: The Internet
 - 2000s - Present: Mobile computers, Cloud, AI
 
 As processors become faster and more powerful, they consume significantly more energy.
@@ -96,32 +103,28 @@ Traditionally, higher clock speeds (smaller time to execute task) and smaller [t
 
 [Multi-core processors][core] enhance performance while maintaining energy efficiency. To fully utilize multiple processors, programs must be designed for parallel execution. However, this introduces challenges such as synchronization, data sharing, and workload distribution.
 
-[data]:                 data/Data
-[string]:               data/text/Text
-[program]:              program/Program
-[instruction]:          program/instruction/Instruction
-[storage]:              components/storage/Storage
-[memory]:               components/memory/Memory
-[RAM]:                  components/memory/ram/RAM
-[indevice]:             components/input-devices/InputDevice
-[outdevice]:            components/output-devices/OutputDevice
-[processor]:            components/processor/Processor
-[CPU]:                  components/processor/Processor
-[logic-gate]:           components/processor/functional-units/logic-gate/LogicGate
-[circuit-block]:        components/processor/functional-units/circuit-block/CircuitBlock
-[GPU]:                  components/gpu/GPU
-[PSU]:                  components/psu/PSU
-[NIC]:                  components/network/NIC
-[cooling-system]:       components/cooling-system/CoolingSystem
-[file]:                 operating-system/file-system/File
-[IC]:                   components/ic/IntegratedCircuit
-[transistor]:           components/processor/functional-units/transistor/Transistor
-[motherboard]:          components/motherboard/Motherboard
-[decoder]:              components/processor/functional-units/decoder/Decoder
-[multiplexer]:          components/processor/components/multiplexer/Multiplexer
-[ALU]:                  components/processor/components/alu/ALU
-[register]:             components/processor/components/register/Register
-[ISA]:                  program/instruction/isa/ISA
-[compiler]:             program/compiler/Compiler
-[core]:                 components/processor/components/core/ProcessorCore
-[Internet]:             network/TheInternet
+[data]:                    General/Data/Data
+[string]:                  General/Data/Data/Text
+[program]:                 General/Program/Program
+[compiler]:                General/Compiler/Compiler
+[instruction]:             ComputerArchitecture/Instruction/Instruction
+[ISA]:                     ComputerArchitecture/ISA/ISA
+[storage]:                 ComputerArchitecture/CoreComponents/Storage/Storage
+[memory]:                  ComputerArchitecture/CoreComponents/Memory/Memory
+[RAM]:                     ComputerArchitecture/CoreComponents/Memory/RAM
+[indevice]:                ComputerArchitecture/CoreComponents/InputDevice/InputDevice
+[outdevice]:               ComputerArchitecture/CoreComponents/OutputDevice/OutputDevice
+[processor]:               ComputerArchitecture/CoreComponents/Processor/Processor
+[CPU]:                     ComputerArchitecture/CoreComponents/Processor/Processor
+[logic-gate]:              ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/LogicGate
+[circuit-block]:           ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/CircuitBlock
+[transistor]:              ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/Transistor
+[decoder]:                 ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/Decoder
+[multiplexer]:             ComputerArchitecture/CoreComponents/Processor/Components/Multiplexer
+[ALU]:                     ComputerArchitecture/CoreComponents/Processor/Components/ALU
+[register]:                ComputerArchitecture/CoreComponents/Processor/Components/Register
+[core]:                    ComputerArchitecture/CoreComponents/Processor/Components/ProcessorCore
+[Computer Architecture]:   ComputerArchitecture/ComputerArchitecture
+[Operating System]:        OpenratingSystem/OperatingSystem
+[Computer Network]:        ComputerNetwork/ComputerNetwork
+[Computer Graphics]:       ComputerGraphics/ComputerGraphics
