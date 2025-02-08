@@ -104,7 +104,7 @@ Traditionally, higher clock speeds (smaller time to execute task) and smaller [t
 [Multi-core processors][core] enhance performance while maintaining energy efficiency. To fully utilize multiple processors, programs must be designed for parallel execution. However, this introduces challenges such as synchronization, data sharing, and workload distribution.
 
 [data]:                    General/Data/Data
-[string]:                  General/Data/Data/Text
+[string]:                  General/Data/Text
 [program]:                 General/Program/Program
 [compiler]:                General/Compiler/Compiler
 [instruction]:             ComputerArchitecture/Instruction/Instruction
@@ -123,8 +123,8 @@ Traditionally, higher clock speeds (smaller time to execute task) and smaller [t
 [multiplexer]:             ComputerArchitecture/CoreComponents/Processor/Components/Multiplexer
 [ALU]:                     ComputerArchitecture/CoreComponents/Processor/Components/ALU
 [register]:                ComputerArchitecture/CoreComponents/Processor/Components/Register
-[core]:                    ComputerArchitecture/CoreComponents/Processor/Components/ProcessorCore
+[core]:                    ComputerArchitecture/CoreComponents/Processor/Components/Core
 [Computer Architecture]:   ComputerArchitecture/ComputerArchitecture
-[Operating System]:        OpenratingSystem/OperatingSystem
+[Operating System]:        OperatingSystem/OperatingSystem
 [Computer Network]:        ComputerNetwork/ComputerNetwork
 [Computer Graphics]:       ComputerGraphics/ComputerGraphics

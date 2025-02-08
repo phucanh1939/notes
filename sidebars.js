@@ -69,8 +69,8 @@ module.exports = {
                     "label": "Components",
                     "items": [
                       "Computer/ComputerArchitecture/CoreComponents/Processor/Components/ALU",
+                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Core",
                       "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Multiplexer",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/ProcessorCore",
                       "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Register"
                     ]
                   },

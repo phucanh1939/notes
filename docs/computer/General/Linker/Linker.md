@@ -14,5 +14,5 @@ The linking proces:
 - Resolve Symbols: Matches and resolves references to symbols (e.g., functions, variables) across object files.
 - Relocate Addresses: Adjusts symbol addresses and offsets to map correctly into the program's **virtual address space** (This virtual address space is where the operating system loads the program during execution).
 
-[Static Linking]:   static-linking/StaticLinking
-[Dynamic Linking]:  dynamic-linking/DynamicLinking
+[Static Linking]:   ./StaticLinking
+[Dynamic Linking]: ./DynamicLinking

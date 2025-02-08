@@ -13,5 +13,5 @@ For computer to "understand" the data, it need to be represented in binary forma
 [number]: Number
 [text]: Text
 [image]: Image
-[audio]: Sound
+[audio]: Audio
 [video]: Video

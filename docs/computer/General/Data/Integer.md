@@ -97,4 +97,4 @@ Decimal =
 
 See [Number History](Number)
 
-[arithemetic]: ../../ComputerArchitecture/Arthmetics/Arithematic
+[arithemetic]: ../../ComputerArchitecture/Arithmetics/Arithmetics
