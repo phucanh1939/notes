@@ -6,6 +6,10 @@ A core inside a processor is an independent processing unit that executes instru
 
 ## How does a Core Execute Instructions?
 
+A processing core includes:
+- Data path: include registers, ALU, MUX, ... (responsible for executing instruction, by performing arithmetic, logical, and data movement operations)
+- Control unit: control what the data path executes by enabling/disabling components at the right time using control signals
+
 Instruction Executeion follows the **Instruction Cycle**, which consists of three main stages:
 - Fetch → Get instruction from memory.
 - Decode → Figure out what the instruction does.
@@ -18,8 +22,8 @@ Instruction Executeion follows the **Instruction Cycle**, which consists of thre
 
 ### How to Form the Final Block
 
-#### 1. Assemble the Execution Pipeline:
-Using basic funtional units to form these units in the execution pipeline:
+#### 1. Assemble the data path
+Using basic funtional units to form the data path, include:
 - **Instruction Fetch Unit** → Retrieves instructions from memory.  
 - **Decode Unit** → Deciphers instructions and determines operands.  
 - **Execution Unit (ALU, FPU, etc.)** → Performs arithmetic, logic, and floating-point operations.  
@@ -27,7 +31,7 @@ Using basic funtional units to form these units in the execution pipeline:
 - **Write-Back Unit** → Stores results in registers or memory.  
 
 #### 2. Integrate Control Logic & Registers:
-Integrate/combine above units and add control unit & register
+Aadd control unit & register
 - **Control Unit (CU)** → Directs data flow and instruction timing.  
 - **Registers** → Store temporary values and instruction operands.  
 - **Branch Predictor** → Optimizes jumps and decision-making logic.  
