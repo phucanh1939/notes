@@ -64,31 +64,30 @@ Logic blocks are categorized as one of two types, depending on whether they cont
 
 ### Combinational Logic Circuit
 
-With basic operations (AND, OR, NOT), we can form a **logic function** that represents any given truth table. The logic function serves as a blueprint for combinational logic circuits. By connecting logic gates according to the logic function, we can build a combinational logic circuit.
+With basic operations (AND, OR, NOT), a **logic function** that represents any given truth table can be formed. The logic function serves as a blueprint for combinational logic circuits. By connecting logic gates according to the logic function, we can build a combinational logic circuit.
 
 #### Example
-| A | B | Output (F) |
-|---|---|------------|
-| 0 | 0 | 0          |
-| 0 | 1 | 1          |
-| 1 | 0 | 1          |
-| 1 | 1 | 1          |
 
-- The corresponding logic function: `F = A + B`
-- The circuit consists of an **OR gate** that takes A and B as inputs.
+| A | B | C | Output (F) |
+|---|---|---|------------|
+| 0 | 0 | 0 | 0          |
+| 0 | 0 | 1 | 0          |
+| 0 | 1 | 0 | 0          |
+| 0 | 1 | 1 | 1          |
+| 1 | 0 | 0 | 0          |
+| 1 | 0 | 1 | 1          |
+| 1 | 1 | 0 | 1          |
+| 1 | 1 | 1 | 1          |
 
+- The corresponding logic function: `F = (A · B · C) + (A · B) + (A · C)`
+- The circuit consists of **AND** and **OR** gates combined to implement the function.
 ### Sequential Logic Circuit
 
-Unlike combinational circuits, sequential circuits have **memory elements** (e.g., flip-flops) that store past inputs and states. 
+Boolean Algebra helps to build `flip-flops` by defining the logical relationships needed to store and update binary states. Flip-flops are constructed using logic gates (AND, OR, NOT, NAND, NOR) arranged based on Boolean equations.
 
-First we build `flip-flop` as the basic building block, then using it to build other complex circuit/block like registers, counters, RAM, etc.
+`Flip-flops` are used to form complex sequential logic circuits (register, RAM, etc.) or used to synchronize execution stages in the processor pipeline by working with the clock signal and detecting rising or falling edges.
 
 #### Example: D Flip-Flop
 A **D Flip-Flop** stores the value of the `D` input when a clock pulse occurs.
 - When the clock signal is high, `D` is stored in the flip-flop.
 - The stored value is available at the output `Q`.
-
-#### Applications of Sequential Circuits:
-- **Registers:** Store binary data.
-- **Counters:** Keep track of occurrences or sequences.
-- **Memory Units:** Store and retrieve data in computers.
