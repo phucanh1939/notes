@@ -1,7 +1,12 @@
 # Transistor
 
 ## What is a Transistor?
-A **transistor** is a semiconductor device that acts as an electronic switch or amplifier. It is the fundamental building block of modern computers, replacing vacuum tubes due to its small size, low power consumption, and high speed
+A **transistor** is a semiconductor device that acts as an electronic switch or amplifier.
+A transistor modifies the **amplitude** (**voltage level**) and sometimes the **current** of the input signal. Depending on its mode of operation, a transistor can:
+- Act as a switch – It turns the output on (high voltage) or off (low voltage) based on the input signal.
+- Amplify the signal – It increases the power of the input signal by controlling a larger current with a smaller input signal.
+
+It is the fundamental building block of modern computers, replacing vacuum tubes due to its small size, low power consumption, and high speed
 
 Transistors form logic gates (AND, OR, NOT, etc.), which combine to create complex circuits (act as components of a computer): ALU, register, RAM, Flip-Flop, Multiplexer, Decoder, etc.
 
