@@ -1,6 +1,10 @@
-# Register File
+# Register
 
-## What is a Register File?
+## What is a Register
+
+A **register** in a processor is a small, fast storage unit used to temporarily hold data, instructions, or addresses during execution. Registers enable quick data access, reducing the need to fetch data from slower memory (RAM or cache).
+
+In real-world processors, **registers** are not built separately but are integrated within the **Register File**.
 
 A **Register File** is a sequential logic block (a memory element) used to store and provide fast access to multiple registers in a processor. 
 
