@@ -18,10 +18,10 @@ The output is:
 - I2 if S = 10
 - I3 if S = 11
 
-![4-to-1 MUX](./Assets/Images/4-to-1_MUX)
+![4-to-1 MUX](./Assets/Images/4-to-1_MUX.jpg)
 
 ## How to Build a Multiplexer?
 
 A `n-to-1` **multiplexer** is built using a `log2(n)-to-n` **[decoder]** to choose the output.
 
-![4-to-1 MUX](./Assets/Images/4-to-1_MUX)
+![4-to-1 MUX](./Assets/Images/4-to-1_MUX.jpg)
