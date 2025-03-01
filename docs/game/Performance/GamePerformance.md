@@ -160,3 +160,9 @@ The total file size of the game build, including assets, code, and dependencies.
 - Compress textures, audio, and video files.
 - Remove unused assets and optimize asset bundles.
 - Strip debug symbols and unused code from the final build.
+
+## Reference
+
+[Unity Performance Manual Document](https://docs.unity3d.com/6000.0/Documentation/Manual/analysis.html)
+[Cocos Creator Native Performance Profiler](https://docs.cocos.com/creator/3.8/manual/en/advanced-topics/profiler.html#native-performance-profiler)
+[Cocos Creator Optimization of Cross-Language Invocation](https://docs.cocos.com/creator/3.8/manual/en/advanced-topics/jsb-optimizations.html#performance-comparison-results-1)
