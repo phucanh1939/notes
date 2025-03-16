@@ -3,157 +3,301 @@
 ## What is a Cache?
 A cache is a small, high-speed memory located inside the CPU that stores frequently accessed data and instructions. It helps reduce the time needed to fetch data from the slower main memory (RAM).
 
-#### Inputs and Outputs:
+### Inputs and Outputs:
 - **Inputs:** Address from the CPU, Read/Write control signals, Data (for writes)
 - **Outputs:** Data (for reads), Hit/Miss signal (indicates if data is in cache)
 
 ## Why Was Cache Created?
 Caches were created to bridge the speed gap between the CPU and RAM. CPUs operate much faster than RAM, so frequent memory access would slow down execution. Cache reduces this latency by storing frequently used data closer to the CPU, improving performance significantly.
 
-The only problem cache solves is reducing the memory access time!!!
+**The only problem cache solves is reducing the memory access time!**
 
 ## How Does Cache Work?
 ### Structure
 A cache is typically organized into multiple levels:
-- **L1 Cache:** Smallest, fastest, closest to the CPU core (focus on reduce access time when cache hit)
-- **L2 Cache:** Larger, slower than L1, may be shared between cores (focus on reduce cache miss rate)
-- **L3 Cache:** Largest, slowest, shared across all CPU cores (focus on reduce cache miss rate)
+- **L1 Cache:** Smallest, fastest, closest to the CPU core (focuses on reducing access time when cache hit)
+- **L2 Cache:** Larger, slower than L1, may be shared between cores (focuses on reducing cache miss rate)
+- **L3 Cache:** Largest, slowest, shared across all CPU cores (focuses on reducing cache miss rate)
 
-The only problem cache solves is reducing the memory access time!!!
-This structure serves this purpose also: reduce miss rate => improve accessing time
-Why not 4, 5 or n level of cache instead of 3? => Balance betwwen miss rate and miss penalty
+**Why not 4, 5, or more levels of cache instead of 3?**
+- Balances **miss rate** and **miss penalty**.
+- 3 is practical choice, more levels can increase access time with diminishing returns.
 
-#### Cache Block Organization
-Each cache is divided into sets, and each set contains multiple blocks. A block is a fixed-size unit that stores data fetched from memory. Each block is built from SRAM (Static RAM) cells, which are constructed using flip-flops for fast access. Each block consists of:
-- **Tag:** Identifies which memory address range the block corresponds to.
+### Cache Block Organization
+Each cache is divided into sets, and each set contains multiple blocks. A block consists of:
+- **Tag:** Upper part of an actual memory address used to identify the memory address range.
 - **Data:** A chunk of memory fetched from RAM (not just the requested word, but an entire block for spatial locality).
 - **Valid Bit:** Indicates whether the data in the block is valid.
 - **Dirty Bit:** Used in write-back caches to track modified data that needs to be written to RAM.
 
-The only problem cache solves is reducing the memory access time!!!
-This set/blocks architecture serves this purpose also: 
-- 1 main memory block address will map to a set and can be in any blocks in this set. (Ex address 10 always be store in set 1)
-- If only 1 block per set we will have a direct-mapped cache where 1 address in memory always map to only 1 block, more miss may happens due to the replace will happen more
-- If only 1 set contains all blocks, an address can be in any block will reduce the replace time but increase the time needed to search for the target block, and the cost to implement hardware to do all the search at the same time (reduce search time) is too high for common use.
-- There for dividing cache into sets each set contains blocks with a tunning set size and block size allow better performance while still keep the cost pratical
-
-#### Address Breakdown
+### Address Breakdown
 When accessing data, the memory address is divided into:
-- **Index:** Used to locate a specific set in the cache (set's index).
+- **Index:** Used to locate a specific set in the cache.
 - **Tag:** Compared against the tags stored in the blocks within the selected set.
 - **Offset:** Specifies the exact byte/word inside the block.
 
-### Read/Write Operations and CPU Interaction
-#### Cache Lookup Process
-1. **CPU Generates a Memory Request:** The CPU issues a read or write request along with a memory address.
-2. **Index Lookup:** The cache controller extracts the **index** bits to locate the corresponding **set**.
-3. **Tag Comparison:** Within the selected set, the **tags** of all blocks are compared to the requested tag.
+#### Example:
+Assume:
+- A **32-bit** memory address
+- A **4 KB (4096 B) cache** with **64-byte blocks**
+- **Direct-mapped cache**
+
+##### Address Breakdown:
+1. **Offset (6 bits):** Since each block is 64 bytes, we need `log2(64) = 6` bits.
+2. **Index (6 bits):** 4 KB cache / 64 B per block = `4096 / 64 = 64` blocks → `log2(64) = 6` bits.
+3. **Tag (20 bits):** The remaining `32 - (6 + 6) = 20` bits.
+
+##### Memory Address Example:
+```
+0xA3B4C8D2  (Binary: 1010 0011 1011 0100 1100 1000 1101 0010)
+```
+- **Tag:** `1010 0011 1011 0100 11` (20 bits)
+- **Index:** `0010 0011` (6 bits)
+- **Offset:** `010010` (6 bits)
+
+## Read/Write Operations and CPU Interaction
+### Cache Lookup Process
+1. **CPU Generates a Memory Request**
+2. **Index Lookup**
+3. **Tag Comparison**
 4. **Hit or Miss:**
-   - If a match is found (**cache hit**), the requested data is retrieved from the block.
-   - If no match (**cache miss**), an entire block of data is fetched from RAM and stored in an available block in the set.
+   - **Cache hit:** The requested data is retrieved.
+   - **Cache miss:** A block is fetched from RAM and stored in the cache (A miss occurs when the requested memory address is not found in the cache, whether for a read or a write.)
 
-#### Read Operation:
-1. **Cache Hit:**
-   - The cache controller detects a tag match.
-   - The block's offset is used to select the exact word.
-   - Data is sent to the CPU.
-2. **Cache Miss:**
-   - The request is forwarded to RAM.
-   - A **whole block** of memory is loaded into the cache.
-   - The block is stored in the set with its new tag.
-   - The CPU receives the requested data.
+### Read Operation:
+1. **Cache Hit:** Data is retrieved from the cache.
+2. **Cache Miss:** Data is fetched from RAM and stored in cache before use.
 
-#### Write Operation:
+### Write Operation:
 1. **Write Hit:**
-   - The block in the cache is updated.
-   - Based on the **write policy**:
-     - **Write-Through:** Data is immediately written to RAM.
-     - **Write-Back:** Data is marked dirty and written later.
-2. **Write Miss:**
-   - Data is written to RAM and may be loaded into the cache (depending on policy).
+   - **Write-Through:** Data is immediately written to RAM.
+   - **Write-Back:** Data is marked dirty and written later.
+2. **Write Miss:** Data is written to RAM and may be loaded into the cache.
 
-### Cache Replacement Policies
-When a cache miss occurs and the cache set is full, the cache must replace an existing block with the new data. The selection of which block to evict depends on the **replacement policy**:
-1. **Least Recently Used (LRU):** Replaces the block that has not been used for the longest time.
-2. **First-In, First-Out (FIFO):** Replaces the oldest block in the set, regardless of usage.
-3. **Random Replacement:** Selects a block randomly for replacement.
-4. **Least Frequently Used (LFU):** Replaces the block that has been accessed the least number of times.
+## Cache Replacement Policies
+When a cache miss occurs and the cache set is full, a block must be replaced. Common policies include:
+1. **Least Recently Used (LRU)**
+2. **First-In, First-Out (FIFO)**
+3. **Random Replacement**
+4. **Least Frequently Used (LFU)**
 
-These policies help optimize cache efficiency by ensuring frequently accessed data remains in cache while infrequently used data is evicted. 
+## Challenges in Optimizing Cache
+- **Increasing cache size** reduces miss rate but increases miss penalty and lookup time.
+- **Using direct-mapped cache** reduces lookup time but increases miss rate.
 
-#### Configurability of Cache Replacement Policies
-Cache replacement policies can be **fixed or configurable**:
-- **Fixed Policies (Most Common):** Many CPUs have a pre-determined replacement policy (e.g., LRU or FIFO) that is hardwired into the cache controller.
-- **Configurable Policies:** Some modern CPUs allow the OS or firmware to adjust the replacement policy based on workload behavior. This flexibility optimizes cache performance dynamically.
+## Challenges in Writing Cache-Optimized Programs
+Memory hierarchy varies between architectures. **Autotuning** dynamically searches for optimal parameters to maximize cache efficiency.
 
+## Q&A
+### What happens to the processor pipeline during a cache miss?
+- **Simple CPUs:** Stall until data is available.
+- **Modern CPUs:** Use **out-of-order execution** to keep executing independent instructions while waiting.
 
-## Question
-- How the tag is calculated and compared, is the tag based on the data inside it or independen
-=> The tag is just the upper bits of the memory address
-=> Compare by directly compare bit by bit 
-=> Tag is upper bits of memory address not the data
+### What is a write miss?
+A miss occurs when the requested memory address is not found in the cache, whether for a read or a write.
 
-- Which component check and handle cache miss, send request to lower level to fetch data to  cache, it happens in multiple cycles? when the final data available in cache, what happen to the data path and pipeline of the processor when a cache missing is handling (does it keep stall untils the data arrive)
-=> cache controller is responsible for:
-   - Detecting the miss (by comparing the tag in the cache).
-   - Sending a request to the next memory hierarchy level (L2 cache, L3 cache, or main memory).
-   - Fetching the requested data and placing it into the cache.
-   - Forwarding the data to the processor once it's available.
-=> A cache miss typically takes multiple cycles
-=> What Happens to the Processor (Pipeline) During a Cache Miss
-   - In a simple processor (like in-order execution):The CPU stalls (waits) until the data is available.
-   - In modern processors (with out-of-order execution):
-      - The processor tries to execute independent instructions while waiting for data.
-      - The instruction that caused the miss is put in a load buffer.
-      - Once the data arrives, the load instruction is resumed.
+### How does a cache track the least recently used (LRU) block?
+- **Full LRU (Counter-based)** → Uses a log₂(N)-bit counter per block.
+- **LRU Stack (Shift Register)** → Reorders blocks on access.
+- **Approximate LRU (2-bit per block)** → Simple & space-efficient.
+- **Pseudo-LRU (Tree-based)** → Best for large caches (8-way, 16-way).
 
-- What is a write miss, why a write can even miss
-=> A miss is when the target memory address tag is not found in cache (no matter read or write)
+### Why are there 3 levels of cache instead of 1?
+- **Single large cache** is too slow.
+- **3 levels balance speed & efficiency:**
+  - L1 → **Small, very fast** (low hit time)
+  - L2 → **Medium-sized**, balances speed & size
+  - L3 → **Large**, reduces main memory accesses
+- **More than 3 levels?** → Diminishing returns.
 
-- How a cache contains data about time a block is loaded to (to use to select block that unused in longest time) - how it represent time with least of bits
-=> Full LRU (Counter-based) → Each block has a log₂(N)-bit counter, updated on access. Accurate but costly.
-=> LRU Stack (Shift Register) → Blocks are reordered on access. Efficient but still costly for large caches.
-=> Approximate LRU (2-bit per block) → Each block gets a small counter (00 to 11) to track usage. Simple & space-efficient.
-=> Pseudo-LRU (Tree-based) → Uses a binary tree (N-1 bits per set) to approximate LRU. Best for large caches (8-way, 16-way).
+## How to Write Cache-Optimized Programs
+### Strategy:
+1. **Load data into cache.**
+2. **Process it repeatedly before replacing it.**
+3. **Minimize unnecessary memory accesses to reduce cache misses.**
 
+### Example: Cache-Friendly Matrix Traversal
+```cpp
+// Bad: Accessing elements row-wise leads to cache misses
+for (int row = 0; row < N; row++) {
+    for (int col = 0; col < N; col++) {
+        result[row][col] = matrix[col][row];
+    }
+}
 
-- Why 3 level of cache needed instead of 1 (or 1 of the size of 3), compare the performance improvement when use 3 level of caches in stead of 1 or 1 with size of 3
-=> Time to access main memory (RAM) is really long compare to the clock cycle time, if there are fews levels between 1 cache and main memory to reduce main memory miss rate a little bit it will increase the memory access time a lot, the number 3 may be a practical number balance the cost and other factors
-=> Each level focus on 1 thing: Level 1 focus on minimize the hit time, Level 2 & 3 focus on minimize the miss rate, ...
+// Good: Accessing elements column-wise improves cache efficiency
+for (int col = 0; col < N; col++) {
+    for (int row = 0; row < N; row++) {
+        result[row][col] = matrix[row][col];
+    }
+}
+```
 
-=> Single large cache is slow → Bigger size increases hit time (latency).
-=> 3 levels balance speed & efficiency:
-   - L1 → Small, very fast (low hit time).
-   - L2 → Medium, balances speed & size.
-   - L3 → Large, reduces main memory accesses.
-=> More than 3 levels? → Higher levels increase access time with diminishing returns.
-=> Conclusion: 3-level cache is a practical trade-off between performance, cost, and power efficiency. 🚀
+# How to Debug/View Cache Behavior
 
+## 🖥️ General Debugging (Cross-Platform)
+Since CPU caches are hardware-level features, you need **profiling tools** that can measure cache-related performance metrics, such as **cache misses**, **cache hit rate**, and **memory latency**.
 
-- How to program to use cache optimal (load data into cache and process that data repeatedly til before replace it with other on the cache to reduce cache miss) -> Example simple program
+### Common Tools:
+- **perf stat** (Linux & macOS): Collects hardware performance counters.
+- **Intel VTune Profiler** (Windows & Linux): Advanced cache analysis.
+- **AMD μProf** (Windows & Linux): Optimized for AMD processors.
+- **Valgrind Cachegrind** (Linux & macOS): Simulates L1/L2 cache usage.
+- **Windows Performance Analyzer (WPA)**: Includes cache statistics.
+- **Linux perf tool**: Native Linux tool for hardware event profiling.
 
-Cache-Optimal Programming Strategy
-To optimize cache usage, the key idea is:
-- Load data into cache.
-- Process it repeatedly while it stays in cache.
-- Avoid unnecessary memory accesses that cause cache misses.
+---
 
+## 🔧 Debugging Cache Behavior on Different OS
 
-- How to see/debug/view cache value when runing a program (in general), and runing a game (unity)
+### 🏁 Windows
+#### 1️⃣ **Intel VTune Profiler**
+   - **Setup:**
+     1. Download & install [Intel VTune Profiler](https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html).
+     2. Open VTune and create a new analysis session.
+     3. Choose **Memory Access Analysis** to track cache misses and memory latency.
+   - **View Cache Usage:**
+     - Look at **L1/L2/L3 Miss Rates** and **DRAM Accesses**.
+     - Identify hotspots where cache misses occur.
 
+#### 2️⃣ **AMD μProf (For AMD CPUs)**
+   - **Setup:**
+     1. Download [AMD μProf](https://developer.amd.com/amd-uprof/).
+     2. Run the application and start a **Memory Profiling** session.
+   - **View Cache Usage:**
+     - Look for **cache hit/miss ratios**.
+     - Optimize data structures to reduce misses.
 
-The performance challenge for algorithms is that the memory hierarchy 
-varies  between  different  implementations  of  the  same  architecture  in  cache  size,  
-associativity,  block  size,  and  number  of  caches. To  cope  with  such  variability,  some  
-recent numerical libraries parameterize their algorithms and then search the parameter 
-space at runtime to fi nd the best combination for a particular computer. This approach 
-is called autotuning
+#### 3️⃣ **Windows Performance Analyzer (WPA)**
+   - **Setup:**
+     1. Install Windows Performance Toolkit (`wpt-x64.exe`).
+     2. Open a terminal and run:
+        ```sh
+        xperf -on PROC_THREAD+LOADER+PROFILE -stackwalk PROFILE
+        ```
+     3. Run your application for a few seconds, then stop profiling:
+        ```sh
+        xperf -d cache_trace.etl
+        ```
+     4. Open `cache_trace.etl` in **Windows Performance Analyzer**.
+   - **View Cache Usage:**
+     - Look at **Memory and Cache Analysis** graphs.
+     - Identify bottlenecks in memory access.
 
-In this section, we focused on four topics: cache performance, using associativity to 
-reduce miss rates, the use of multilevel cache hierarchies to reduce miss penalties, 
-and soft ware optimizations to improve eff ectiveness of caches
+---
 
-Th e  memory  system  has  a  signifi cant  eff ect  on  program  execution  time.  Th e 
-number of memory-stall cycles depends on both the miss rate and the miss penalty. 
-Th e challenge, as we will see in Section 5.8, is to reduce one of these factors without 
-signifi cantly aff ecting other critical factors in the memory hierarchy
+### 🍏 macOS
+#### 1️⃣ **Instruments (Xcode)**
+   - **Setup:**
+     1. Open Xcode > `Instruments`.
+     2. Select **Counters** > **Cache Misses & L1/L2 Usage**.
+     3. Run your program and analyze memory usage.
+   - **View Cache Usage:**
+     - Identify cache miss spikes.
+     - Optimize loops and memory access patterns.
+
+#### 2️⃣ **perf tool (via Terminal)**
+   - **Setup:**
+     1. Open Terminal.
+     2. Run:
+        ```sh
+        sudo perf stat -e cache-misses,cache-references ./your_program
+        ```
+   - **View Cache Usage:**
+     - **High cache-misses** means poor cache efficiency.
+     - Adjust memory access patterns to improve performance.
+
+#### 3️⃣ **Valgrind Cachegrind (macOS via Homebrew)**
+   - **Setup:**
+     1. Install Valgrind:
+        ```sh
+        brew install --HEAD valgrind
+        ```
+     2. Run Cachegrind:
+        ```sh
+        valgrind --tool=cachegrind ./your_program
+        ```
+     3. View results:
+        ```sh
+        cg_annotate cachegrind.out.*
+        ```
+   - **View Cache Usage:**
+     - Shows **L1/L2 cache misses per function**.
+     - Helps optimize data locality.
+
+---
+
+### 🐧 Linux
+#### 1️⃣ **perf stat**
+   - **Setup:**
+     1. Open Terminal.
+     2. Run:
+        ```sh
+        sudo perf stat -e cache-misses,cache-references ./your_program
+        ```
+   - **View Cache Usage:**
+     - Reports **cache-miss percentage**.
+     - Optimize memory access to improve performance.
+
+#### 2️⃣ **Valgrind Cachegrind**
+   - **Setup:**
+     1. Install Valgrind:
+        ```sh
+        sudo apt install valgrind
+        ```
+     2. Run Cachegrind:
+        ```sh
+        valgrind --tool=cachegrind ./your_program
+        ```
+     3. View results:
+        ```sh
+        cg_annotate cachegrind.out.*
+        ```
+   - **View Cache Usage:**
+     - Identifies **which functions cause cache misses**.
+
+#### 3️⃣ **Intel VTune Profiler (for x86 CPUs)**
+   - **Setup:**
+     1. Download Intel VTune.
+     2. Run:
+        ```sh
+        vtune -collect memory-access ./your_program
+        ```
+   - **View Cache Usage:**
+     - Analyze cache hierarchy usage.
+
+---
+
+## 🎮 Debugging Cache in Unity
+Unlike system-level cache profiling, **Unity does not provide direct cache visualization**. However, you can detect **cache-related performance issues** using the **Unity Profiler**.
+
+### 🔍 Unity Profiler – Key Metrics Related to Cache Performance:
+1. **CPU Usage → Hierarchy View:**
+   - Look for **high memory access time** in functions.
+   - Frequent memory accesses may indicate poor cache locality.
+
+2. **Memory Profiler:**
+   - Check for **frequent allocations** (could indicate poor cache reuse).
+   - Look for excessive **cache thrashing** (data moving in and out of cache).
+
+3. **Frame Debugger:**
+   - Analyze **draw calls** (large data structures may cause cache inefficiency).
+
+4. **Custom Profiling Scripts:**
+   - Use `System.Diagnostics.Stopwatch` to measure execution time.
+   - Compare different data structures (e.g., **Array of Structs (AoS) vs. Struct of Arrays (SoA)**).
+
+### 🚀 Best Practices for Cache Optimization in Unity:
+- **Use Struct of Arrays (SoA) instead of Array of Structs (AoS).**
+  ```csharp
+  // Bad (Array of Structs – Cache inefficient)
+  struct Entity { float x, y, z; float speed; }
+  Entity[] entities;
+
+  // Good (Struct of Arrays – Cache friendly)
+  struct EntityData { float[] x, y, z, speed; }
+  EntityData entityData;
+  ```
+- Batch memory accesses to avoid cache misses.
+- Use Unity's NativeArray<T> for better cache alignment.
+- Keep frequently accessed data together in memory.
