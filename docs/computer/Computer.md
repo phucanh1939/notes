@@ -1,8 +1,7 @@
 # Computer
 
 ## What is a Computer?
-A computer is a programmable electronic device designed to process **[data]** and perform tasks by executing **[programs][program]**.
-It can handle a wide range of operations, from simple calculations to complex **[data]** analysis, based on the instructions provided.
+A computer is a programmable electronic device designed to process **[data]** (transform data from 1 from to another form).
 
 **Types of Computers**:
 - Personal Computers (PCs)
