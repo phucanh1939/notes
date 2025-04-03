@@ -103,6 +103,7 @@ A miss occurs when the requested memory address is not found in the cache, wheth
 - **Pseudo-LRU (Tree-based)** → Best for large caches (8-way, 16-way).
 
 ### Why are there 3 levels of cache instead of 1?
+It is a pratical numbers:
 - **Single large cache** is too slow.
 - **3 levels balance speed & efficiency:**
   - L1 → **Small, very fast** (low hit time)
@@ -115,20 +116,3 @@ A miss occurs when the requested memory address is not found in the cache, wheth
 1. **Load data into cache.**
 2. **Process it repeatedly before replacing it.**
 3. **Minimize unnecessary memory accesses to reduce cache misses.**
-
-### Example: Cache-Friendly Matrix Traversal
-```cpp
-// Bad: Accessing elements row-wise leads to cache misses
-for (int row = 0; row < N; row++) {
-    for (int col = 0; col < N; col++) {
-        result[row][col] = matrix[col][row];
-    }
-}
-
-// Good: Accessing elements column-wise improves cache efficiency
-for (int col = 0; col < N; col++) {
-    for (int row = 0; row < N; row++) {
-        result[row][col] = matrix[row][col];
-    }
-}
-```
