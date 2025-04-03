@@ -33,11 +33,19 @@ RAM acts as a cache for disk storage. The process works as follows:
 3. If RAM is full, the OS swaps out an existing page to disk using a page replacement algorithm.
 4. The page table is updated to reflect the new mapping.
 
-### **7. Performance Considerations**
+### **7. Virtual Memory Advantages and Compiler Assumptions**
+- **Bigger Address Space**: The program **sees** a large, continuous block of memory, even if it is actually spread across RAM and disk.
+- **Compiler Assumptions**: The compiler assumes the program's memory is a **single, continuous block** and generates virtual addresses accordingly.
+- **OS Handles Mapping**: When the program runs, the **OS maps virtual addresses to physical addresses** dynamically using the **page table**.
+- **Efficient Memory Use**: Programs don’t need to manage memory manually—**unused pages can be swapped out to disk**, and only needed pages stay in RAM.
+
+This abstraction simplifies programming and enables **multi-tasking**, **security isolation**, and **efficient memory utilization**.
+
+### **8. Performance Considerations**
 - **Page faults are slow**: Accessing data from disk is much slower than accessing RAM.
 - **Thrashing**: If too many page faults occur, system performance degrades significantly as the OS spends most of its time swapping pages in and out.
 - **Optimizations**: Techniques such as demand paging, prefetching, and increasing physical memory can improve performance.
 
-### **8. Conclusion**
+### **9. Conclusion**
 Virtual memory and paging allow efficient use of system resources, enabling processes to use more memory than physically available. However, excessive paging can lead to performance issues, making proper memory management essential for system efficiency.
 
