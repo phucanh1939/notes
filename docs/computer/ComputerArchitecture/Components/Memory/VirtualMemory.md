@@ -3,6 +3,8 @@
 ## What is Virtual Memory?
 Virtual memory is a memory management technique that provides an abstraction of physical memory, allowing programs to use a larger address space than what is physically available. The operating system (OS) manages virtual memory by mapping virtual addresses to physical memory locations using a process called **paging**.
 
+More importantly, virtual memory supports sharing of the main memory among multiple, simultaneously active processes, in a protected manner
+
 ## Why Was Virtual Memory Created?
 Virtual memory was introduced to address the following challenges:
 
@@ -52,6 +54,9 @@ Common strategies include:
 - **Least Recently Used (LRU):** Replaces the page that has not been used for the longest time.
 - **First-In-First-Out (FIFO):** Replaces the oldest loaded page.
 - **Optimal Page Replacement:** Replaces the page that will not be used for the longest future period (requires future knowledge).
+
+#### Writting Operation
+Writes to secondary memory are expensive, so virtual memory uses a write-back scheme and also tracks whether a page is unchanged (using a dirty bit) to avoid writing unchanged pages
 
 ## Performance Considerations
 - **Page faults are slow:** Accessing data from disk is much slower than from RAM.
