@@ -2,13 +2,13 @@
 
 ## **What is a Logic Gate?**
 
-**A logic gate** is a fundamental building block of digital circuits that processes binary inputs (0 and 1) to produce a specific output based on logical operations.
+A logic gate is the physical representation of a logical operations (AND, OR, NOT, etc.), takes binary input and generate output
 
 Logic gates can be used to forms complex circuits for a computer: ALU, register, RAM, Flip-Flop, Multiplexer, Decoder, etc.
 
 ## **How a Logic Gate Works**
 
-Electrical current flows through the input terminals of the gate, passing through internally connected transistors. These transistors manipulate the signals based on the gate’s logic function, producing the corresponding output.
+Electrical current flows through the input terminals of the gate, passing through internally connected transistors. These transistors manipulate the signals producing the corresponding output.
 
 Example:
 - **AND Gate**: Uses two transistors in series—both must be ON for output to be HIGH (1).
@@ -27,12 +27,12 @@ Other gates (AND, OR, NOT, XOR) are built using **universal gates**
 
 ```
 // Using NAND
-A' = A NAND A
+NOT A = A NAND A
 A AND B = (A NAND B) NAND (A NAND B)
 A OR B = (A' NAND B')' = (A NAND A) NAND (B NAND B)
 
 // Using NOR
-A' = A NOR A
+NOT A = A NOR A
 A OR B = (A NOR B) NOR (A NOR B)
 A AND B = (A' NOR B')' = (A NOR A) NOR (B NOR B)
 ```

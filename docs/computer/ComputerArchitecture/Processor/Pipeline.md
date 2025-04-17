@@ -8,7 +8,7 @@ Pipeline improves overall processor throughput, even though the time to execute 
 
 ## How does Pipeline Work?
 
-The execution of an instruction is split into multiple stages:
+The execution of an instruction is split into multiple stages, example:
 
 - Instruction Fetch (IF)
 - Instruction Decode (ID)
@@ -23,7 +23,7 @@ The data after each stage is stored in a stage register until the next clock cyc
 ![Pipeline Overview](./Assets/Images/PipelineIdea.jpg)
 
 ### Flow:
-- A flip-flop is placed right after the PC (before the input line of the instruction memory block).
+- Example there is a flip-flop is placed right after the PC (before the input line of the instruction memory block) - in the image, there is no flip-flop after PC but the data is go from EX/MEM register 
 - **Clock Edge 1:** The flip-flop stores the instruction address from the PC and allows the signal from the PC to enter the instruction memory to fetch the instruction. The instruction data is stored in the IF/ID register, waiting for the next cycle.
 - **Clock Edge 2:** The flip-flop after IF/ID allows data to pass from IF/ID to the ID block, decoding the instruction and storing the decoded data in ID/EX. Simultaneously, the next instruction is fetched in the IF block.
 - This process continues for all stages, with a flip-flop placed after PC and after each stage register.
@@ -103,7 +103,7 @@ add t1, t2, t3
   - If correct, continue as normal.
   - If incorrect, flush all executed instructions after the branch.
 - **Dynamic prediction:** Use history-based prediction (e.g., 1-bit or 2-bit branch history).
-- **Delayed branching:** Place independent instructions after the branch to execute while the branch decision is made.
+- **Delayed branching:** Place independent instructions after the branch to execute while the branch decision is made (usually compiler level)
 
 #### How to Flush Changes on Misprediction
 If a branch misprediction occurs:

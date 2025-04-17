@@ -1,7 +1,7 @@
 # Processor
 
 ## What is a Processor?
-**A processor (CPU - Central Processing Unit)** is the main computing unit of a computer that **fetches**, **decodes**, and **executes instructions**.
+**A processor or CPU (Central Processing Unit)** is the main computing unit of a computer that **fetches**, **decodes**, and **executes instructions**.
 
 ## How a Processor Work
 
