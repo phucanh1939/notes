@@ -2,6 +2,11 @@ module.exports = {
   tutorialSidebar: [
   {
     "type": "category",
+    "label": "Art",
+    "items": []
+  },
+  {
+    "type": "category",
     "label": "Computer",
     "items": [
       {
@@ -36,28 +41,57 @@ module.exports = {
           },
           {
             "type": "category",
-            "label": "CoreComponents",
+            "label": "Components",
             "items": [
               {
                 "type": "category",
                 "label": "InputDevice",
                 "items": [
-                  "Computer/ComputerArchitecture/CoreComponents/InputDevice/InputDevice"
+                  "Computer/ComputerArchitecture/Components/InputDevice/InputDevice"
                 ]
               },
               {
                 "type": "category",
                 "label": "Memory",
                 "items": [
-                  "Computer/ComputerArchitecture/CoreComponents/Memory/Memory",
-                  "Computer/ComputerArchitecture/CoreComponents/Memory/RAM"
+                  {
+                    "type": "category",
+                    "label": "Cache",
+                    "items": [
+                      "Computer/ComputerArchitecture/Components/Memory/Cache/Cache",
+                      "Computer/ComputerArchitecture/Components/Memory/Cache/CacheOptimizedProgram",
+                      "Computer/ComputerArchitecture/Components/Memory/Cache/CacheSizeCheck"
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Components",
+                    "items": [
+                      "Computer/ComputerArchitecture/Components/Memory/Components/FlipFlop",
+                      "Computer/ComputerArchitecture/Components/Memory/Components/Latch",
+                      "Computer/ComputerArchitecture/Components/Memory/Components/MemoryController"
+                    ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "GabageCollector",
+                    "items": [
+                      "Computer/ComputerArchitecture/Components/Memory/GabageCollector/GabageCollector"
+                    ]
+                  },
+                  "Computer/ComputerArchitecture/Components/Memory/MemoryHierarchy",
+                  "Computer/ComputerArchitecture/Components/Memory/RAID",
+                  "Computer/ComputerArchitecture/Components/Memory/RAM",
+                  "Computer/ComputerArchitecture/Components/Memory/Register",
+                  "Computer/ComputerArchitecture/Components/Memory/ROM",
+                  "Computer/ComputerArchitecture/Components/Memory/VirtualMemory"
                 ]
               },
               {
                 "type": "category",
                 "label": "OutputDevice",
                 "items": [
-                  "Computer/ComputerArchitecture/CoreComponents/OutputDevice/OutputDevice"
+                  "Computer/ComputerArchitecture/Components/OutputDevice/OutputDevice"
                 ]
               },
               {
@@ -68,30 +102,26 @@ module.exports = {
                     "type": "category",
                     "label": "Components",
                     "items": [
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/ALU",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Core",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Multiplexer",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/Components/Register"
+                      "Computer/ComputerArchitecture/Components/Processor/Components/ALU",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/Clock",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/Decoder",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/LogicCircuit",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/LogicGate",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/Multiplexer",
+                      "Computer/ComputerArchitecture/Components/Processor/Components/Transistor"
                     ]
                   },
-                  {
-                    "type": "category",
-                    "label": "FunctionalUnits",
-                    "items": [
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/CircuitBlock",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/Decoder",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/LogicGate",
-                      "Computer/ComputerArchitecture/CoreComponents/Processor/FunctionalUnits/Transistor"
-                    ]
-                  },
-                  "Computer/ComputerArchitecture/CoreComponents/Processor/Processor"
+                  "Computer/ComputerArchitecture/Components/Processor/Core",
+                  "Computer/ComputerArchitecture/Components/Processor/Exception",
+                  "Computer/ComputerArchitecture/Components/Processor/Pipeline",
+                  "Computer/ComputerArchitecture/Components/Processor/Processor"
                 ]
               },
               {
                 "type": "category",
                 "label": "Storage",
                 "items": [
-                  "Computer/ComputerArchitecture/CoreComponents/Storage/Storage"
+                  "Computer/ComputerArchitecture/Components/Storage/Storage"
                 ]
               }
             ]
@@ -138,6 +168,22 @@ module.exports = {
                 ]
               },
               "Computer/ComputerArchitecture/ISA/ISA"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Parallelism",
+            "items": [
+              "Computer/ComputerArchitecture/Parallelism/Challenges",
+              "Computer/ComputerArchitecture/Parallelism/DataLevelParallelism",
+              "Computer/ComputerArchitecture/Parallelism/InstructionLevelParallelism"
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Term",
+            "items": [
+              "Computer/ComputerArchitecture/Term/Bus"
             ]
           },
           "Computer/ComputerArchitecture/ComputerArchitecture"
@@ -248,7 +294,19 @@ module.exports = {
         "type": "category",
         "label": "OperatingSystem",
         "items": [
-          "Computer/OperatingSystem/OperatingSystem"
+          "Computer/OperatingSystem/MemoryAllocation",
+          "Computer/OperatingSystem/OperatingSystem",
+          "Computer/OperatingSystem/Process",
+          "Computer/OperatingSystem/ProgramProcessAndThread",
+          "Computer/OperatingSystem/ProgramStartup",
+          "Computer/OperatingSystem/Thread"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Performance",
+        "items": [
+          "Computer/Performance/PerformanceOrientedProgramming"
         ]
       },
       "Computer/Computer"
@@ -267,12 +325,37 @@ module.exports = {
       },
       {
         "type": "category",
+        "label": "GameEngines",
+        "items": [
+          {
+            "type": "category",
+            "label": "Unity",
+            "items": []
+          }
+        ]
+      },
+      {
+        "type": "category",
         "label": "Ideas",
         "items": [
           "Game/Ideas/AnimalRescueFarm",
           "Game/Ideas/MechanicsForHypercasual",
           "Game/Ideas/SlidingMatch3",
           "Game/Ideas/TowerDefenseRPG"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Notes",
+        "items": [
+          "Game/Notes/Note"
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Performance",
+        "items": [
+          "Game/Performance/GamePerformance"
         ]
       },
       "Game/Game"

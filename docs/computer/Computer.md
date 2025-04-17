@@ -1,7 +1,7 @@
 # Computer
 
 ## What is a Computer?
-A computer is a programmable electronic device designed to process **[data]** (transform data from 1 from to another form).
+A computer is a programmable electronic device designed to process **[data]** (**transform data** from 1 from to another form).
 
 **Types of Computers**:
 - Personal Computers (PCs)
@@ -21,7 +21,7 @@ For a computer to process **[data]**, the following steps are involved:
 2. **Program Loading**: The program is also loaded into **[memory]**.
 3. **Execution**: The **[processor]** fetches **[data]** and **[instructions][instruction]** from **[memory]** and executes them.
 4. **Output Data**: The processed data is written back into **[memory]**.
-5. **Output Presentation**: The output data can be written into **[storage]** (as **[files]**) or read by an **[output device][outdevice]** (e.g., monitor, printer) to present it to the user.
+5. **Output Presentation**: The output data can be written into **[storage]** (as **files**) or read by an **[output device][outdevice]** (e.g., monitor, printer) to present it to the user.
 
 ![How a Computer Processes Data](Assets/Flowcharts/HowComputerProcessData.drawio.png)
 
@@ -33,10 +33,10 @@ For a computer to process **[data]**, the following steps are involved:
 - **[Output Device][outdevice]**: Reads data from memory and presents it to the user (e.g., monitor, speaker, printer).
 
 ### Other Important Components
-- **[Graphics Processing Unit (GPU)][gpu]**: Handles graphics rendering and parallel processing tasks.
-- **[Power Supply Unit (PSU)][psu]**: Provides power to the computer system.
-- **[Cooling System][cooling-system]**: Prevents overheating by dissipating heat (e.g., fans, heat sinks).
-- **[Network Interface Card (NIC)][nic]**: Enables network connectivity.
+- **Graphics Processing Unit (GPU)**: Handles graphics rendering and parallel processing tasks.
+- **Power Supply Unit (PSU)**: Provides power to the computer system.
+- **Cooling System**: Prevents overheating by dissipating heat (e.g., fans, heat sinks).
+- **Network Interface Card (NIC)**: Enables network connectivity.
 
 ### Example: Extracting Sentences with a Keyword
 A computer [program] to extract all sentences in a text document that contain a keyword:
@@ -53,8 +53,8 @@ A computer [program] to extract all sentences in a text document that contain a 
 2. **[Transistors][transistor]**: Combined to form **[logic gates][logic-gate]** (e.g., AND, OR, NOT).
 3. **[Logic Gates][logic-gate]**: Used to build **[circuit blocks][circuit-block]** like **[decoder], [multiplexer], [ALU], and [register]**.
 4. **[Circuit Blocks][circuit-block]**: Form **core components** such as **[CPU][processor], [RAM][ram], [GPU], and [controllers]**.
-5. **[Integrated Circuits (ICs)][IC]**: Core components are fabricated into microchips.
-6. **[Motherboard]**: [ICs][IC], [storage], [cooling systems][cooling-system], and I/O ports are assembled onto a **motherboard**.
+5. **Integrated Circuits (ICs)**: Core components are fabricated into microchips.
+6. **Motherboard**: ICs, [storage], cooling systems, and I/O ports are assembled onto a **motherboard**.
 
 ### Performance of a Computer
 
@@ -100,7 +100,7 @@ Traditionally, higher clock speeds (smaller time to execute task) and smaller [t
 
 => The shift to [multi-core processor][core] has become more prevalent.
 
-[Multi-core processors][core] enhance performance while maintaining energy efficiency. To fully utilize multiple processors, programs must be designed for parallel execution. However, this introduces challenges such as synchronization, data sharing, and workload distribution.
+[Multi-core processors][core] enhance performance while maintaining energy efficiency. To fully utilize multiple processors, programs **MUST** be designed for parallel execution.
 
 [data]:                    General/Data/Data
 [string]:                  General/Data/Text

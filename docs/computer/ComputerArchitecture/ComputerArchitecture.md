@@ -1,24 +1,40 @@
 # Computer Architecture
 
-**Computer Architecture** is the study of how computer systems are designed and organized. 
-It focuses on the structure and behavior of a computer system especially Processor (CPU) and Memory - main components for computer to do its job - processing data
+**Computer Architecture** is the study of how computer systems are designed and organized.  
+It focuses on the structure and behavior of a computer system—especially the **Processor (CPU)** and **Memory**, which are the main components responsible for processing data (transforming data from one form to another).
 
-### 1. Instruction & Instruction Set Architecture (ISA)
-- The interface between hardware and software.
-- Defines available instructions, registers, and memory addressing modes.
+## Topics in Computer Architecture
 
-### 2. Microarchitecture
-- Internal design of a CPU.
-- Includes pipelines, caches, and execution units.
+### [Instruction & Instruction Set Architecture (ISA)](./Instruction/Instruction.md)
+Defines the commands a computer can execute (data transformations). 
 
-### 3. Memory Hierarchy
-- Organization of RAM, cache, and storage.
-- Optimization for performance and efficiency.
+Sections:
+  - Structure of an instruction (opcode, operands, etc.)  
+  - Types of instructions: arithmetic, logic, control, memory access  
+  - How ISAs are designed to balance performance, complexity, and compatibility  
 
-### 4. Input/Output (I/O) Systems
-- How the CPU communicates with peripherals.
-- Includes devices like keyboards, GPUs, and storage.
+### Processor
+The hardware implementation of the ISA.  
 
-### 5. Parallelism & Performance
-- Techniques like pipelining and multi-core processors.
-- Optimizing for speed and efficiency.
+Sections:
+  - Basic building blocks (logic gates, logic circuit)
+  - Internal design of the CPU
+  - How it fetches, decodes, and executes instructions  
+
+### Memory
+How data and instructions are stored for processing.
+
+Sections:
+- How memory components are built: flip-flops, SRAM, DRAM, and storage technologies  
+- Different types of memory in a computer
+- **Memory hierarchy**: Organizing memory types to execute data faster  
+
+### Parallelism
+Designing hardware to execute data transformations in parallel for better performance and energy efficiency.
+
+Sections
+  - Why energy efficiency matters and why the shift to multicore processors occurred 
+  - Challenges in design parallelism hardware/sofware
+  - **Instruction-level parallelism**: Executing multiple instructions at once  
+  - **Data-level parallelism**: Executing the same instruction on multiple data  
+  - The need to shift from sequential to multi-core programming to take full advantage of multicore processors (and how to do it in basic form)

@@ -8,7 +8,7 @@ function getSortedSidebar(dir) {
   let items = fs.readdirSync(dir).map((item) => {
     const fullPath = path.join(dir, item);
     const isDirectory = fs.statSync(fullPath).isDirectory();
-    return { name: item, path: fullPath, isDirectory };
+    return { name: item, path: fullPath.replaceAll('\\', '/'), isDirectory };
   });
 
   // Filter out non-Markdown files and "Assets" folders
@@ -32,7 +32,7 @@ function getSortedSidebar(dir) {
         items: getSortedSidebar(item.path),
       };
     } else {
-      return path.relative(docsDir, item.path).replace(/\.md$/, '');
+      return path.relative(docsDir, item.path).replace(/\.md$/, '').replaceAll('\\', '/');
     }
   });
 }
