@@ -35,8 +35,6 @@ Blocks are placed in **sets**. The way blocks are mapped to sets determines the 
 | Set Associative   | 2–16           | Moderate (tag check)| Medium         | General-purpose CPU caches     |
 | Fully Associative | All in one set | Slow (all tags check)| Low            | TLBs, small specialized caches |
 
-#### How Is a Block Found 
-
 #### How Is a Block Found
 
 | Type               | How Location Is Determined                         | Number of Comparisons           |
