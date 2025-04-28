@@ -2,103 +2,87 @@
 
 ## Gameplay
 
-**Capybara Go** is a level-based progression game where players guide a capybara through humorous, text-driven adventures.
+2D side-scrolling idle progression game where you guide a capybara through humorous, text-driven adventures.
 
-### Structure
-- **Side-scrolling 2D setup**, similar to Mario.
-- **Idle gameplay**: auto movement and combat.
-- Players only make **choices during events**.
-
-### Levels & Days
-- Each level is divided into **multiple days** (e.g., Level 10 has 40 days).
-- Each day is a stage with a specific **event**.
+- Auto-movement and auto-combat.
+- Players only make choices during events.
+- Progress through chapters; each chapter is divided into multiple days (e.g., Level 10 = 40 days = 40 events).
+- Hard stage every 4–5 stages.
 
 ### Event Types
 
-1. **Story Event**
-   - Narrative only; tap "Next Day" to continue.
-
-2. **Direct Buff/Debuff Event**
-   - Capybara receives an effect; tap "Next Day" to continue.
-
-3. **NPC Event**
-   - Interact with an NPC and choose 1–2 options.
-   - Outcome: buff, debuff, item, skill, or nothing.
-   - Some include a minigame (e.g., slot machine, spinning wheel) for random rewards.
-
-4. **Mini-game Event**
-   - Play simple games (slot, spin, match-3) for coins/items.
-   - Rewards do **not** affect stats.
-
-5. **Battle Event**
-   - Turn-based, idle battles (no input).
-   - Some are optional with rare skill rewards.
-   - **1–3 waves** per battle; each wave has **up to 2 enemies**.
-   - Win within **30 turns** or lose the level.
-   - Capybara auto-casts a **special skill** (based on equipped weapon) when mana is full.
-   - Mana is restored by normal attacks.
+- **Story Event**: Narrative only; tap to continue.
+- **Buff/Debuff Event**: Get an effect; tap to continue.
+- **NPC Event**: Choose options to get a buff, debuff, item, skill, or nothing. Some include simple minigames.
+- **Mini-game Event**: Play games (slot, spin, match-3) for coins/items (no stat effects).
+- **Battle Event**: Turn-based, idle battles. Win within 30 turns. Auto-cast special skill when mana is full.
 
 ### Enemy Types
 
-- **Normal Creep**: No skill. Grants EXP.
-- **Skill Creep**: Has skill. Grants EXP.
-- **Boss**: Has special skill. Drops chest with a selectable skill.
-- **Final Boss**: Appears on the last wave of the last day.
+- **Normal Creep**: No skill, grants EXP.
+- **Skill Creep**: Has skills, grants EXP.
+- **Boss**: Drops chest with selectable skill.
+- **Final Boss**: Last wave of the last day.
 
-## Progression
+## Other Modes
 
-- Enemies get stronger in higher levels (better stats, stronger skills).
-- Players improve the capybara through upgrades:
-  - **Equipment, pets, artifacts, mounts**, etc.
-- Game has "hard" levels every 5–10 levels. After passing one, a few following levels are easier.
+- **Trainer Boss**: Rewards based on damage dealt (gems, coins, chests); 2 times/day.
+- **Guild Boss**: Rewards when boss is killed (gems, guild points); 2 times/day.
+- **Dungeons**: 4 types; different bosses and materials; higher levels = harder bosses and better rewards; requires tickets.
+- **Tower Challenge**: 10 stages per tower; 1–2 enemies per stage; boss at final stage; rewards include gacha tickets and materials.
+- **PVP Arena**: Auto turn-based battles with leaderboard; rewards are gems and chests.
+- **Goblin Miner**: Minigame to get materials for upgrading pet skills.
+- **Dungeon Dive**: Rewards include materials for mount upgrades and Capy Gacha tickets.
 
-## Resources
+*Note: Player can skip battles to final results.*
 
-- **Equipment**: Boosts capybara stats.
-- **Coin**: Upgrades talents and hero (stats + passive skills).
-- **Gem**: Used for gacha (items, equipment, materials).
-- **Collectables**: Boost stats and unlock special effects.
-- **Materials**: Used to upgrade equipment, pets, mounts, artifacts, etc.
-- **Keys**: Open shop chests for materials/equipment.
-- **Chests**: Contain materials, collectables, gems, coins.
-- **Pet Eggs**: Hatch to unlock/upgrade pets.
+## Core Features
 
-## Game Loop
+- **Equipment**: Boosts stats; obtained from equipment chests; upgraded by merging.
+- **Pets**: Ally units + stats; obtained from pet eggs; upgraded with pet food; skill upgrades provide extra stats.
+- **Mounts**: Special skills and stats; obtained from Capy Machine and events; upgraded with horseshoes.
+- **Artifacts**: Like mounts; obtained from Capy Machine and events; upgraded with hammers.
+- **Hero**: Special units with skills and stats; obtained from hero gacha; upgraded with hero pieces and books.
+- **Collection**: Boost stats and unlock additional skills by collecting and upgrading items.
+- **Adventure**: Boost stats and unlock skills; upgraded with special materials.
+- **Talent**: Boost stats and unlock special Hero; upgraded with coins and books.
 
-**Play → Get items → Upgrade → Repeat**
+## Other Features
+
+- Offline rewards (AFK reward).
+- Quick sweep cleared chapters.
+- 7-day quest system.
+- Daily login rewards.
+- Daily quests.
+- Battle Pass: Finish daily quests to earn points.
+- Energy Pass: Play main chapters to earn points; rewards include chests and energy.
+- Friend System: Messaging and energy gifting.
+- Guild System: Guild shop, boss battles, quests, and guild fights.
+
+## Events
+
+### Scheduled Events
+
+- **Battle Pass**: Monthly reset.
+- **Energy Pass**: Every 2 weeks; play main chapter stages.
+- **Energy Spend Event**: Every 2–3 days; spend energy to earn event items and rewards (milestones).
+- **Growth Events**: Weekly; spend materials to earn milestone rewards (chests, pet eggs, upgrade stones).
+- **Capy Gacha**: Weekend event; use gacha tickets for rewards (mounts, artifacts, special pets); milestone bonuses and special quests.
+- **Wheel Events**: Weekly; spin wheels for collection items and other rewards; tickets bought with gems or IAP.
+
+### Seasonal Special Events
+
+- Complete quests to earn tickets or buy with gems/IAP.
+- Use tickets to play minigames and collect reward tokens.
+- Exchange tokens for rewards.
+- Some seasonal events include passes and special wheels.
 
 ## Monetization
 
-- **Reward Ads**: Gems, items, access to special modes.
-- **IAP** (In-App Purchases):
-  - Normal packs: gem packs, daily packs
-  - Special offers: first purchase, chapter packs, etc.
-  - Event packs (for event tickets)
-  - Passes: Battle pass, energy pass, achievement passes, Special event passes
-  - Subscription cards: ad-free, monthly, lifetime, etc.
-
-## Features & Events
-
-### Additional Modes 
-- **Towers**: 1 wave/level, no skills. Special reward every 10 levels (materials, coins, gacha tickets, keys).
-- **Dungeons**: 6 stages/level. Boss at the end. Choose skills at the start. Enemies get random skills. Run ends on defeat.  
-  - Rewards: gems, mount materials, capy gacha tickets (every 10 levels).
-- **Sweep Bosses**: 4 types. Spend tickets. Harder bosses with better rewards each level. Bosses have unique effects.
-- **PVP**: Random match 2 player by power point, turnbase battle (just like PVE), no need for online, has leader board
-
-### Features
-- Stat growth systems: **pets, mounts, artifacts, collections, talents, hero**.
-- **Social**: Guild, friends,
-- **Daily**: Quests, check-ins.
-- **New User**: 7-day progression (3 phases), "new world" feature.
-
-### Events
-- **Battle Pass**: Monthly.
-- **Energy Pass**: every 2-3 weeks
-- **Energy Spend Event** (every 2–3 days): Use energy to sweep completed chapters → collect special items → exchange for rewards.
-- **Weekly Events**: Material-spending events (e.g., pet upgrades, chests, mounts).
-- **Special Events**: Seasonal (Noel, New Year, 1/4, 14/2, etc.)
-  - Use event tickets (from gems, packs, quests) to play minigames: fishing, farm (plant & havert), slot machines, etc.
-  - Earn points → exchange for rewards.
-
-
+- **Reward Ads**: Gems, items, special mode access.
+- **IAP**:
+  - Gem packs, daily packs.
+  - Special offers (first purchase, chapter packs).
+  - Event packs (event tickets).
+  - Battle Pass, Energy Pass, Achievement Pass.
+  - Subscription cards (ad-free, monthly, lifetime).

@@ -12,6 +12,11 @@
 - Die at boss wave → restart at wave 1 of the same stage (train until you defeat the boss).
 - Die at normal wave → return to the previous stage (train).
 
+## Other game mode:
+
+- Boss Fights: 1 Stage with bosses only (need ticket)
+- Campaign: 1 stage only (need ticket)
+
 ## Core Features
 
 - **Equipment**: Boosts stats; upgrade by merging; obtained from shop gacha.
@@ -19,19 +24,18 @@
 - **Skills**: Equip and auto-cast; upgrade by merging; obtained from shop gacha.
 - **Boosters**: Temporarily increase stats and game speed.
 - **Lifetime Quests**: One quest at a time; rewards Gems.
+- **Collection System**: boost stats by collecting/upgrading items
 
 ## Other Features
 
 - Offline rewards
 - Shop: Gacha packs (paid with Gems or ads) for pets, skills, and equipment
-- Additional game modes (require tickets): Boss Fights, Campaign (extra resources)
 - 7-Day Quest (New user)
 - Daily Login Rewards
 - Daily Quests
 - Piggy Bank
 - Battle Pass
 - Lucky Wheel
-- Collection System (boost stats by collecting/upgrading items)
 
 ## Monetization
 
