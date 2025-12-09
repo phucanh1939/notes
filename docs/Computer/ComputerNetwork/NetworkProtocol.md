@@ -2,7 +2,7 @@
 
 ## **What is a protocol**
 
-The sender and reciever must agree on how the data format so it can pack and parse the data correctly 
+The sender and receiver must **agree on the data format** so it can be packed and parsed correctly.  
 
 A **protocol** is a set of rules that define how devices communicate.
 
@@ -25,11 +25,10 @@ Protocols exist at **every layer** of the network.
 
 ---
 
-## **How applications handle protocols**
-- Applications are designed to **expect a specific protocol** on a port.  
-- **No protocol type data is explicitly included** in the packet.  
-- The **transport layer port number** tells the OS which application receives the data.  
-- The application assumes all data it receives follows its protocol.  
+## **Application Layer Protocols (assumed by the receiver)**
+- The receiver application **assumes** all data it receives on a specific port follows the expected protocol.  
+- **No protocol type information** is explicitly included in the packet payload.  
+- The **port number** in the transport layer segment tells the OS which application to deliver the data to.  
 
 **Example:**
 - HTTP server listens on TCP port 80  
@@ -38,7 +37,21 @@ Protocols exist at **every layer** of the network.
 
 ---
 
+## **Other Layer Protocols (known by the layer)**
+- Lower layers (Transport, Network, Data Link) **know which protocol to use** because the information is included in the segment or packet header.  
+- The receiver’s layer reads the header to determine how to parse the payload.  
+- Examples:  
+  - **Transport Layer:** TCP vs UDP (port numbers + flags in segment header)  
+  - **Network Layer:** IP version (IPv4/IPv6) in packet header  
+  - **Data Link Layer:** Ethernet frame type (EtherType)  
+
+**Key idea:**  
+- Protocols at these layers are **explicitly indicated in headers**, unlike application layer protocols which rely on the receiving application to assume the protocol.  
+
+---
+
 ## **Key idea**
-- **Sender**: formats data according to the protocol the receiver expects  
-- **Receiver**: assumes data follows the protocol, parses it accordingly  
-- **OS/transport layer**: delivers payload to the correct application via port  
+- **Sender:** formats data according to the protocol the receiver expects  
+- **Receiver application:** assumes data follows the protocol and parses it accordingly  
+- **Receiver layers:** read headers to determine the correct protocol and parse payload  
+- **OS/Transport Layer:** delivers application payload to the correct application via port
