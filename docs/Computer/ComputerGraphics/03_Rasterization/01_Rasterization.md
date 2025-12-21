@@ -1,13 +1,5 @@
-# Basic Graphics Pipeline
 
-**World / Scene data** (3D triangles)  
-→ **Camera + Projection** → 2D triangles  
-→ **Rasterization** → pixel values  
-→ **Textures** → final image
-
----
-
-## Rasterization
+# Rasterization
 
 **Rasterization** is the process of converting **2D triangles into pixels**.
 
